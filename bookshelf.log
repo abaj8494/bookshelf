@@ -1,0 +1,134 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.24)  21 JAN 2025 01:41
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**bookshelf.ins
+(./bookshelf.ins
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/docstrip.tex
+\blockLevel=\count188
+\emptyLines=\count189
+\processedLines=\count190
+\commentsRemoved=\count191
+\commentsPassed=\count192
+\codeLinesPassed=\count193
+\TotalprocessedLines=\count194
+\TotalcommentsRemoved=\count195
+\TotalcommentsPassed=\count196
+\TotalcodeLinesPassed=\count197
+\NumberOfFiles=\count198
+\inFile=\read2
+\inputcheck=\read3
+\off@0=\count199
+\off@1=\count266
+\off@2=\count267
+\off@3=\count268
+\off@4=\count269
+\off@5=\count270
+\off@6=\count271
+\off@7=\count272
+\off@8=\count273
+\off@9=\count274
+\off@10=\count275
+\off@11=\count276
+\off@12=\count277
+\off@13=\count278
+\off@14=\count279
+\off@15=\count280
+\@maxfiles=\count281
+\@maxoutfiles=\count282
+
+Utility: `docstrip' v2.6b <2022-09-03>
+English documentation    <2023-10-10>
+
+**********************************************************
+* This program converts documented macro-files into fast *
+* loadable files by stripping off (nearly) all comments! *
+**********************************************************
+
+********************************************************
+* No Configuration file found, using default settings. *
+********************************************************
+
+)
+
+Generating file(s) ./bookshelf.cls 
+\openout0 = `./bookshelf.cls'.
+
+
+Processing file bookshelf.dtx (class) -> bookshelf.cls
+% % % % % % % % % % % % % % % % % % % % % % % % % % <*driver . > <class . >
+<class . > <*class . > <*driver . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . % . . . . . .
+> % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % <*class % % % %
+% % % % % % % % % % % % % % % % % % % % . % % % % % % % % % . % % % % % % % %
+% % % % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . % % % % % % % % % . . . . % % % %
+% % % % % % . % % % % % % % % . % % % % % % % . % % % % % % % % . % % % % % %
+% . . . . % % % % % % % % % % % % % . % % % % % % % . . % % % % % % % % % % %
+% % % % % . % % % % % % % % % % % % % % % . % % % % % % % . % % % % % % % % .
+% % % % % % % % % % . % % % % % % % % % % % . % % % % % % % . % % % % % . % %
+% % % % . % % % % % % . % % % % % % % % % % % % % % % % % % . . % % % % % . %
+% % % % . % % % % % % % % % . % % % % % . % % % % % % % % % % % . % % % % % %
+% % . % % % % % % % % % % % % . . . . . % % % % % % % % . . . . . . % % % % %
+% % % % % % . . . . . . . . . % % % % % % % % . % % % % % . . % % % % % % . .
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % . . .
+. . % % % . . . . . . . . % % % % . . . . . . . . . . . % % % % . . . . . . .
+. % % % . . . . . . . . . . . . % % % . . . . . . . % % % % % % % % % % % % %
+% % % % . % % % % . . . . . . . . % % % . . . . . . . . . . . . . . . . . . .
+. % % % % . . % % % % % % % % . . . . . . . . . . . . % % % % % % % % % % % .
+. . . % . . % . . . . . . % % % % % % % % % % . . . . . . . . . . . . . . . .
+. . . . . . . . % % % % % % % % % % . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . % % % % % % % % % % % . . . . . . . . . . . .
+. . . . . . . . . . . . % % % % % % % % % % % . . . . . . . . . . . . . . . .
+. . . . . . . % % % % % % % % % % % . . . . . . . . . . . . . . . . . . . . .
+. . . . . . % % % % % % % % % % % % % . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . % % % % % % . . . . . . . . . . % % % % . % % % > % % % %
+% % .
+Lines  processed: 1847
+Comments removed: 989
+Comments  passed: 34
+Codelines passed: 814
+
+********************************************************
+** Read the documentation before using this class.    **
+** Happy LaTeXing!                                    **
+**                                                    **
+********************************************************
+ ) 
+Here is how much of TeX's memory you used:
+ 330 strings out of 474116
+ 3548 string characters out of 5743681
+ 1925187 words of memory out of 5000000
+ 22784 multiletter control sequences out of 15000+600000
+ 558069 words of font info for 36 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 12i,0n,15p,365b,120s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+No pages of output.
+PDF statistics:
+ 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

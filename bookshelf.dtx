@@ -1,0 +1,1847 @@
+% \iffalse meta-comment
+%
+%
+% bookshelf.dtx is copyright © 2020-2024 by Peter Flynn
+% <peter@silmaril.ie> and Boris Veytsman <borisv@lk.net>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3c of this license or (at your option) any later
+% version. The latest version of this license is in:
+%
+%     http://www.latex-project.org/lppl.txt
+%
+% and version 1.3c or later is part of all distributions of
+% LaTeX version 2008-06-01 or later.
+%
+% This work has the LPPL maintenance status ‘maintained’.
+% 
+% The current maintainer of this work is Peter Flynn <peter@silmaril.ie>
+%
+% This work consists of the files bookshelf.dtx and bookshelf.ins,
+% the derived file , 
+% and any other ancillary files listed in the MANIFEST.
+%
+% \fi
+% \iffalse
+%<*driver>
+\ProvidesFile{bookshelf.dtx}
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}[2017/04/15]
+%<class>\ProvidesClass{bookshelf}
+%<*class>
+[2024/10/09 v1.2 Turn your bibliography into a bookshelf image]
+%</class>
+%<*driver>
+\RequirePackage{fix-cm}% included by default.
+\PassOptionsToPackage{svgnames}{xcolor}% xcolor/dox/hyperref implied
+\documentclass[12pt]{ltxdoc}
+%%
+%% Packages added for documentation
+%%
+\usepackage[noindex]{dox}% used by default. (0)%
+
+  \makeatletter
+  \doxitem[idxtype=attribute]{Attribute}{CPK@attribute}{attributes}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=attributevalue]{AttributeValue}{CPK@attributevalue}{attribute values}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=class]{Class}{CPK@class}{classes}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=colour]{Colour}{CPK@colour}{colours}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=counter]{Counter}{CPK@counter}{counters}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=DTD]{DTD}{CPK@dtd}{DTDs/Schemas}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=element]{Element}{CPK@element}{element types}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=entity]{Entity}{CPK@entity}{entities}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=error]{Error}{CPK@error}{errors}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=field]{Field}{CPK@field}{fields}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=file]{File}{CPK@file}{files}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=font]{Font}{CPK@font}{fonts}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=function]{Function}{CPK@function}{functions}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=language]{Language}{CPK@language}{languages}
+  \makeatother
+  \makeatletter
+  \doxitem[macrolike,idxtype=length]{Length}{CPK@length}{lengths}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=mode]{Mode}{CPK@mode}{modes}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=option]{Option}{CPK@option}{options}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=package]{Package}{CPK@package}{packages}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=variable]{Variable}{CPK@variable}{variables}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=parameter]{Parameter}{CPK@parameter}{parameters}
+  \makeatother
+  \makeatletter
+  \doxitem[macrolike,idxtype=switch]{Switch}{CPK@switch}{switches}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=template]{Template}{CPK@template}{templates}
+  \makeatother
+  \makeatletter
+  \doxitem[idxtype=typeface]{Typeface}{CPK@typeface}{typefaces}
+  \makeatother
+  \makeatletter
+  \doxitem[macrolike,idxtype=box]{Box}{CPK@box}{boxes}
+  \makeatother
+  \newcommand{\LabelFont}[2][\relax]{\strut
+    {\fontencoding\encodingdefault
+	    \fontfamily{lmtt}\fontseries{lc}#1\selectfont#2}\space}
+  \makeatletter
+  \let\CPK@macro\macro\let\CPK@endmacro\endmacro
+  \makeatother
+  \makeatletter
+  \let\CPK@environment\environment\let\CPK@endenvironment\endenvironment
+  \makeatother
+  \makeatletter
+  \def\PrintAttributeName#1{\LabelFont{@#1}}
+  \makeatother
+  \def\PrintAttributeValueName#1{\LabelFont{"#1"}}
+  \def\PrintClassName#1{\LabelFont[\fontfamily{lmss}]{#1}}
+  \def\PrintColourName#1{\LabelFont[\color{#1}]{#1}}
+  \def\PrintCounterName#1{\LabelFont{#1}}
+  \def\PrintDTDName#1{\LabelFont{#1}}
+  \def\PrintElementName#1{\LabelFont{<#1>}}
+  \def\PrintEntityName#1{\LabelFont{\&#1;}}
+  \def\PrintEnvironmentName#1{\LabelFont[\fontfamily{lmss}]{#1}}
+  \def\PrintErrorName#1{\LabelFont[\color{Red}!]{#1}}
+  \def\PrintFunctionName#1{\LabelFont[\bfseries\itshape]{#1}}
+  \def\PrintLanguageName#1{\LabelFont{#1}}
+  \def\PrintLengthName#1{\LabelFont{#1}}
+  \def\PrintMacroName#1{\LabelFont{#1}}
+  \def\PrintModeName#1{\LabelFont[\sffamily]{\textlangle#1\textrangle}}
+  \def\PrintOptionName#1{\LabelFont[\bfseries]{#1}}
+  \def\PrintPackageName#1{\LabelFont[\fontfamily{lmss}]{#1}}
+  \def\PrintSwitchName#1{\LabelFont{#1}}
+  \def\PrintTemplateName#1{\LabelFont[\bfseries]{#1}}
+  \def\PrintVariableName#1{\LabelFont[\ttfamily]{#1}}
+  \def\PrintParameterName#1{\LabelFont[\ttfamily]{#1}}
+  \def\PrintFieldName#1{\LabelFont[\ttfamily]{#1}}
+%% fontenc omit: conflict: fontspec (3)
+%% inputenc omit: conflict: fontspec (6)
+\usepackage{fontspec}% part/@conformance=xelatex detected. (7)%
+  \renewcommand{\textsc}[1]{{\small\MakeTextUppercase{#1}}}
+\usepackage{noto}% requested by author (15)%
+\usepackage{luximono}% requested by author (16)%
+\usepackage{mflogo}% used by default. (36)%
+\usepackage[british]{babel}% used by default. (41)%
+\usepackage{calc}% used by default. (50)%
+  \makeatletter
+  {\scriptsize
+	    \global\advance\@totalleftmargin by1em
+	    \global\advance\MacroIndent by.5em}
+  \makeatother
+\usepackage{ccaption}% used by default. (53)%
+  \captionnamefont{\bfseries}
+  \captionstyle{\raggedright}
+\usepackage[inline]{enumitem}% use of 'variablelist' detected (57)%
+  \setlist[description]{style=unboxed}
+  \setlist[itemize]{leftmargin=2em}
+  \setlist[enumerate]{leftmargin=2em}
+  \newlist{inlineenum}{enumerate*}{1}
+  \setlist[inlineenum,1]{label=\emph{\alph*}),
+	    itemjoin={{; }},itemjoin*={{; and }}}
+\usepackage{fancyhdr}% requested by author (59)%
+  \makeatletter
+  \pagestyle{fancy}
+	    \cfoot{}
+	    \lhead{\footnotesize\rightmark}
+	    \rhead{\small\thepage}
+	    \rfoot{\footnotesize The \LaTeX\
+	      \textsf{\SIL@docname} \SIL@doctype}
+	    \renewcommand{\headrulewidth}{0pt}
+	    \renewcommand{\footrulewidth}{0pt}
+  \makeatother
+\usepackage{relsize}% use of 'acronym' detected (65)%
+\usepackage{textcase}% used by default. (68)%
+\usepackage{float}% used by default. (70)%
+  \renewcommand{\topfraction}{.85}
+  \renewcommand{\bottomfraction}{.7}
+  \renewcommand{\textfraction}{.15}
+  \renewcommand{\floatpagefraction}{.66}
+  \renewcommand{\dbltopfraction}{.66}
+  \renewcommand{\dblfloatpagefraction}{.66}
+  \setcounter{topnumber}{9}
+  \setcounter{bottomnumber}{9}
+  \setcounter{totalnumber}{20}
+  \setcounter{dbltopnumber}{9}
+\usepackage[level]{fmtcount}% xref/@linkend➝listitem/xml:id detected. (71)%
+\usepackage[a4paper,left=30mm,top=25mm,
+  textwidth=150mm,textheight=225mm,headheight=15pt]{geometry}% used by
+  % default. (72)%
+\usepackage{biblatex}  
+\usepackage{hypdoc}% requested by author (78)%
+  \hypersetup{linkcolor=DarkBlue,urlcolor=Blue,citecolor=Red}
+  \ExecuteBibliographyOptions{maxcitenames=1}
+  \DeclareFieldFormat{citehyperref}{%
+	    \DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+	    \bibhyperref{#1}}
+  \DeclareFieldFormat{textcitehyperref}{%
+	    \DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+	    \bibhyperref{%
+	    #1%
+	    \ifbool{cbx:parens}
+	    {\bibcloseparen\global\boolfalse{cbx:parens}}
+	    {}}}
+  \savebibmacro{cite}
+  \savebibmacro{textcite}
+  \renewbibmacro*{cite}{%
+	    \printtext[citehyperref]{%
+	    \restorebibmacro{cite}%
+	    \usebibmacro{cite}}}
+  \renewbibmacro*{textcite}{%
+	    \ifboolexpr{
+	    ( not test {\iffieldundef{prenote}} and
+	    test {\ifnumequal{\value{citecount}}{1}} )
+	    or
+	    ( not test {\iffieldundef{postnote}} and
+	    test {\ifnumequal{\value{citecount}}{\value{citetotal}}} )
+	    }
+	    {\DeclareFieldAlias{textcitehyperref}{noformat}}
+	    {}%
+	    \printtext[textcitehyperref]{%
+	    \restorebibmacro{textcite}%
+	    \usebibmacro{textcite}}}
+\usepackage{listings}% use of 'programlisting' detected (85)%
+  \lstdefinelanguage{dummy}
+	    {morekeywords={dummy}}
+  \lstdefinelanguage{Makefile}
+	  {otherkeywords={.PHONY,.DEFAULT},%
+	    morekeywords={PHONY,DEFAULT,shell,ifeq,else,endif},%
+	    keywordsprefix={.},%
+	    moredelim=[l][\color{Green}]{:},%
+	    morecomment=[l]{\#},%
+	    moredelim=[s][\color{Blue}]{\$(}{)}%
+	  }
+  \lstdefinelanguage{DocBook}[]{XML}
+	    {morekeywords={abstract,address,affiliation,annotation,arg,
+	    author,book,chapter,classname,cmdsynopsis,command,
+	    constraintdef,contrib,copyright,cover,date,email,emphasis,
+	    envar,filename,firstname,footnote,guibutton,guilabel,
+	    guimenu,guimenuitem,guisubmenu,holder,info,itemizedlist,
+	    listitem,literal,member,option,orderedlist,orgdiv,orgname,
+	    package,para,parameter,part,personname,phrase,procedure,
+	    productname,programlisting,quote,refsection,remark,
+	    constructorsynopsis,methodparan,modifier,funcparams,olink,
+	    bibliography,biblioentry,biblioset,subtitle,artpagenums,
+	    volumenum,issuenum,DOCTYPE,SYSTEM,xml:id,releaseinfo,
+	    replaceable,revdescription,revhistory,revision,sect1,sect2,
+	    sect3,sect4,seg,seglistitem,segmentedlist,segtitle,
+	    simplelist,step,surname,systemitem,tag,term,title,uri,
+	    userinput,variablelist,varlistentry,wordasword,xref,year,
+	    xlink:href}}
+	  
+  \makeatletter
+  \lstdefinelanguage{bash}
+	    {morestring=[s]{[]},morekeywords={exit,logout,yes,no,@,
+	    password,ssh,URL,cd,dvips,latex,ls,makeindex,man,mkdir,
+	    pdflatex,sudo,texconfig,texdoc,updmap,xelatex,biber,
+	    latexmk,bibtex}} 
+	  
+  \makeatother
+  \lstdefinelanguage{APA}[]{XML}
+	    {morekeywords={TTL}}
+	  
+  \lstdefinelanguage{OOXML}[]{XML}
+	    {morekeywords={w:p,w:pPr,w:pStyle,w:rPr,w:rFonts,
+	    w:r,w:t,w:lang}}
+	  
+  \lstdefinelanguage{SGML}[]{XML}
+	    {morekeywords={sec,ttl}}
+	  
+  \lstdefinelanguage{DTD}[]{XML}
+	    {morekeywords={ELEMENT,ENTITY,ATTLIST,CDATA,ID,REQUIRED,
+	    IMPLIED,PCDATA}}
+	  
+  \lstdefinelanguage{Runoff}
+	    {morekeywords={h1}}
+	  
+  \lstdefinelanguage{GML}
+	    {morekeywords={h1}}
+	  
+  \lstdefinelanguage{Scribe}
+	    {morekeywords={Heading},morestring=[s]{[]}}
+	  
+  \lstdefinelanguage{RTF}[]{TeX}
+	    {moretexcs={rtf,ansi,deff,adeflang,fonttbl,f,froman,fprq,
+	    fcharset,f1,fswiss,falt,fnil,colortbl,red,green,blue,
+	    stylesheet,s,snext,nowidctlpar,hyphen,hyphlead,hyphtrail,
+	    hyphmax,cf,kerning,dbch,af,langfe,afs,alang,loch,fs,
+	    pgndec,pard,plain,qc,sb,sa,keepn,b,ab,rtlch,ltrch,par}}
+
+  \lstdefinelanguage{TEI}[]{XML}
+	    {morekeywords={TEI,TEI.2,teiHeader,fileDesc,sourceDesc,
+	    titleStmt,title,author,editor,respStmt,resp,name,
+	    editionStmt,edition,text,body,publicationStmt,publisher,
+	    div,div1,placeName,lg,l,s,cl,phr,w,list,distinct,p,pb,
+	    mls,div2,head,num,val,app,lem,rdg,q,sup,uncl,note,
+	    DOCTYPE,SYSTEM,xml:id}}[keywords,comments,strings]
+	  
+  \lstdefinelanguage{XSLT2}[]{XML}
+	    {morekeywords={xsl:stylesheet,xsl:transform,
+	    xsl:apply-imports,xsl:attribute-set,xsl:decimal-format,
+	    xsl:import,xsl:include,xsl:key,xsl:namespace-alias,
+	    xsl:output,xsl:param,
+	    xsl:preserve-space,xsl:strip-space,xsl:template,
+	    xsl:variable,xsl:character-map,xsl:function,
+	    xsl:import-schema,xsl:param,xsl:variable,
+	    xsl:apply-imports,xsl:apply-templates,xsl:attribute,
+	    xsl:call-template,xsl:choose,xsl:comment,xsl:copy,
+	    xsl:copy-of,xsl:element,xsl:fallback,xsl:for-each,
+	    xsl:if,xsl:message,xsl:number,xsl:otherwise,
+	    xsl:processing-instruction,xsl:text,xsl:value-of,
+	    xsl:variable,xsl:when,xsl:with-param,xsl:sort,
+	    xsl:for-each-group,xsl:next-match,xsl:analyze-string,
+	    xsl:namespace,xsl:result-document,xsl:copy,
+	    xsl:fallback,xsl:document,xsl:sequence,
+	    xsl:matching-substring,xsl:non-matching-substring,
+	    xsl:perform-sort,xsl:output-character},
+	    alsodigit={-}}
+	  
+  \lstdefinelanguage{LaTeXe}[LaTeX]{TeX}
+	    {morekeywords = {selectlanguage,foreignlanguage,
+	    textbrokenbar,textlangle,textrangle,subsection,url,
+	    chapter,tableofcontents,part,subsubsection,paragraph,
+	    subparagraph,maketitle,setlength,listoffigures,
+	    listoftables,color,arraybackslash,includegraphics,
+	    textcite,parencite,graphicspath,lstinline,
+	    DeclareLanguageMapping,textcolor,definecolor,colorbox,
+	    fcolorbox,RequirePackage,PassOptionsToPackage}}
+	  
+  \lstdefinelanguage{BIBTeX}{
+	    morekeywords = {title,author,edition,publisher,year,
+	    address},
+	    morestring=[b]",
+	    }
+	  
+  \lstdefinelanguage{Email}{
+	    morekeywords={From,Subject,To,Date},
+	    }
+	  
+  \lstset{defaultdialect=LaTeXe,frame=single,
+	    framesep=.5em,backgroundcolor=\color{AliceBlue},
+	    rulecolor=\color{LightSteelBlue},framerule=1pt}
+	  
+  \lstloadlanguages{LaTeXe,DocBook,XML,XSLT2,bash}
+  \lstdefinelanguage{XMLFRAG}{tag=**[s]<>}[html]
+  \lstnewenvironment{listingsdoc}
+	    {\lstset{language={[LaTeX]TeX}}}
+	    {}
+  \newcommand\basicdefault[1]{\footnotesize
+	    \color{Black}\ttfamily#1}
+	  
+  \lstset{basicstyle=\basicdefault{\spaceskip.5em}}
+  \lstset{literate=
+	    {§}{{\S}}1
+	    {©}{{\raisebox{.125ex}{\copyright}\enspace}}1
+	    {«}{{\guillemotleft}}1
+	    {»}{{\guillemotright}}1
+	    {Á}{{\'A}}1
+	    {Ä}{{\"A}}1
+	    {É}{{\'E}}1
+	    {Í}{{\'I}}1
+	    {Ó}{{\'O}}1
+	    {Ö}{{\"O}}1
+	    {Ú}{{\'U}}1
+	    {Ü}{{\"U}}1
+	    {ß}{{\ss}}2
+	    {à}{{\`a}}1
+	    {á}{{\'a}}1
+	    {ä}{{\"a}}1
+	    {é}{{\'e}}1
+	    {í}{{\'i}}1
+	    {ó}{{\'o}}1
+	    {ö}{{\"o}}1
+	    {ú}{{\'u}}1
+	    {ü}{{\"u}}1
+	    {¹}{{\textsuperscript1}}1
+            {²}{{\textsuperscript2}}1
+            {³}{{\textsuperscript3}}1
+	    {ı}{{\i}}1
+	    {—}{{---}}1
+	    {’}{{'}}1
+	    {…}{{\dots}}1
+	    {➝}{{$leftarrow$}}1
+            {⮠}{{$\hookleftarrow$}}1
+	    {␣}{{\textvisiblespace}}1,
+	    keywordstyle=\color{DarkGreen}\bfseries,
+	    identifierstyle=\color{DarkRed},
+	    commentstyle=\color{Gray}\upshape,
+	    stringstyle=\color{DarkBlue}\upshape,
+	    emphstyle=\color{Chocolate}\upshape,
+	    showstringspaces=false,
+	    columns=fullflexible,
+	    keepspaces=true}
+\usepackage{makeidx}% used by default. (87)%
+  \makeindex
+\usepackage{nicefrac}% used by default. (93)%
+  \def\textonehalf{\ensuremath{\nicefrac12}}
+\usepackage{parskip}% requested by author (95)%
+\usepackage{sectsty}% requested by author (99)%
+  \allsectionsfont{\sffamily\raggedright}
+  \renewcommand*{\descriptionlabel}[1]{\hspace\labelsep
+	    \sffamily\bfseries #1}
+\usepackage[normalem]{ulem}% use of 'link' detected (105)%
+\usepackage{url}% use of 'uri' detected (106)%
+  \AtBeginDocument{\urlstyle{tt}}
+\usepackage{varioref}% use of 'xref' detected (109)%
+  \vrefwarning
+  \labelformat{appendix}{Appendix~#1}
+  \makeatletter
+  \labelformat{chapter}{\@chapapp~#1}
+  \makeatother
+  \labelformat{section}{section~#1}
+  \labelformat{subsection}{section~#1}
+  \labelformat{subsubsection}{section~#1}
+  \labelformat{paragraph}{section~#1}
+  \labelformat{figure}{Figure~#1}
+  \labelformat{table}{Table~#1}
+  \labelformat{item}{item~#1}
+  \renewcommand{\reftextcurrent}{elsewhere on this
+	    page}
+  \def\reftextafter{on the
+	    \reftextvario{next}{following} page}
+\usepackage{xcolor}% used by default. (117)%
+  \makeatletter
+  \@ifundefined{T}{%
+	    \newcommand{\T}[2]{{\fontencoding{T1}%
+	      \selectfont#2}}}{}
+  \makeatother
+\usepackage{classpack}[2020/05/19]% used by default. (122)%
+\makeatletter
+\newcommand{\SIL@doctype}{class}
+\newcommand{\SIL@docname}{bookshelf}
+\newcommand{\SIL@docowner}{Silmaril}
+\makeatother
+\addbibresource{bookshelf.bib}
+\allsectionsfont{\sffamily}
+%
+%%
+%% Settings for docstrip and ltxdoc 
+%%
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}\raggedright
+  \DocInput{bookshelf.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!  Double quote  \"  Hash (number) \#
+%   Dollar        \$  Percent       \%  Ampersand     \&
+%   Acute accent  \'  Left paren    \(  Right paren   \)
+%   Asterisk      \*  Plus          \+  Comma         \,
+%   Minus         \-  Point         \.  Solidus       \/
+%   Colon         \:  Semicolon     \;  Less than     \<
+%   Equals        \=  Greater than  \>  Question mark \?
+%   Commercial at \@  Left bracket  \[  Backslash     \\
+%   Right bracket \]  Circumflex    \^  Underscore    \_
+%   Grave accent  \`  Left brace    \{  Vertical bar  \|
+%   Right brace   \}  Tilde         \~}
+%
+% \changes{v1.0}{2024/10/02}{New maintainer.  Starting rewriting}
+% \changes{v0.5}{2020/05/24}{Finished initial testing: Replaced hyperref with hypdoc to avoid makeindex bug.}
+% \changes{v0.4}{2020/05/19}{Completed documentation: 1) Updated note on bug in biber when processing sgml.bib; 2) Removed sgml.bib as example until problems are resolved; 3) Backtracked on attempt to use the monographic title for articles, chapters, etc; 4) Revised notes on production.}
+% \changes{v0.3}{2020/05/14}{Finished first pass on documentation: 1) Done preliminary testing; 2) Script adapted for Mac OS X.}
+% \changes{v0.2}{2020/05/12}{Started documentation: Code doc done, user doc still missing.}
+% \changes{v0.1}{2020/05/7}{First packaged draft: Done manually from .tex file.}
+%
+% \GetFileInfo{bookshelf.dtx}
+%
+% \DoNotIndex{\@,\@@par,\@beginparpenalty,\@empty}
+% \DoNotIndex{\@flushglue,\@gobble,\@input,\@makefnmark}
+% \DoNotIndex{\@makeother,\@maketitle,\@namedef,\@ne}
+% \DoNotIndex{\@spaces,\@tempa,\@tempb,\@tempswafalse}
+% \DoNotIndex{\@tempswatrue,\@thanks,\@thefnmark,\@topnum}
+% \DoNotIndex{\@@,\@elt,\@forloop,\@fortmp,\@gtempa}
+% \DoNotIndex{\@totalleftmargin,\",\/,\@ifundefined,\@nil}
+% \DoNotIndex{\@verbatim,\@vobeyspaces,\|,\~,\ ,\active}
+% \DoNotIndex{\advance,\aftergroup,\begingroup,\bgroup}
+% \DoNotIndex{\mathcal,\csname,\def,\documentstyle}
+% \DoNotIndex{\dospecials,\edef,\egroup,\else,\endcsname}
+% \DoNotIndex{\endgroup,\endinput,\endtrivlist}
+% \DoNotIndex{\expandafter,\fi,\fnsymbol,\futurelet,\gdef}
+% \DoNotIndex{\global,\hbox,\hss,\if,\if@inlabel}
+% \DoNotIndex{\if@tempswa,\if@twocolumn,\ifcase,\ifcat}
+% \DoNotIndex{\iffalse,\ifx,\ignorespaces,\index,\input}
+% \DoNotIndex{\item,\jobname,\kern,\leavevmode,\leftskip}
+% \DoNotIndex{\let,\llap,\lower,\m@ne,\next,\newpage}
+% \DoNotIndex{\nobreak,\noexpand,\nonfrenchspacing}
+% \DoNotIndex{\obeylines,\or,\protect,\raggedleft}
+% \DoNotIndex{\rightskip,\rm,\sc,\setbox,\setcounter}
+% \DoNotIndex{\small,\space,\string,\strut,\strutbox}
+% \DoNotIndex{\thefootnote,\thispagestyle,\topmargin}
+% \DoNotIndex{\trivlist,\tt,\twocolumn,\typeout,\vss,\vtop}
+% \DoNotIndex{\xdef,\z@,\,,\@bsphack,\@esphack,\@noligs}
+% \DoNotIndex{\@vobeyspaces,\@xverbatim,\`,\catcode,\end}
+% \DoNotIndex{\escapechar,\frenchspacing,\glossary}
+% \DoNotIndex{\hangindent,\hfil,\hfill,\hskip,\hspace,\ht}
+% \DoNotIndex{\it,\langle,\leaders,\long,\makelabel}
+% \DoNotIndex{\marginpar,\markboth,\mathcode,\mathsurround}
+% \DoNotIndex{\mbox,\newcount,\newdimen,\newskip}
+% \DoNotIndex{\nopagebreak,\parfillskip,\parindent}
+% \DoNotIndex{\parskip,\penalty,\raise,\rangle,\section}
+% \DoNotIndex{\setlength,\TeX,\topsep,\underline,\unskip}
+% \DoNotIndex{\verb,\vskip,\vspace,\widetilde,\\,\%,\@date}
+% \DoNotIndex{\@defpar,\[,\{,\},\],\count@,\ifnum,\loop}
+% \DoNotIndex{\today,\uppercase,\uccode,\baselineskip}
+% \DoNotIndex{\begin,\tw@,\a,\b,\c,\d,\e,\f,\g,\h,\i,\j,\k}
+% \DoNotIndex{\l,\m,\n,\o,\p,\q,\r,\s,\t,\u,\v,\w,\x,\y,\z}
+% \DoNotIndex{\A,\B,\C,\D,\E,\F,\G,\H,\I,\J,\K,\L,\M,\N,\O}
+% \DoNotIndex{\P,\Q,\R,\S,\T,\U,\V,\W,\X,\Y,\Z,\1,\2,\3,\4}
+% \DoNotIndex{\5,\6,\7,\8,\9,\0,\!,\#,\$,\&,\',\(,\)}
+% \DoNotIndex{\+,\.,\:,\;,\<,\=,\>,\?,\_,\discretionary}
+% \DoNotIndex{\immediate,\makeatletter,\makeatother}
+% \DoNotIndex{\meaning,\newenvironment,\par,\relax}
+% \DoNotIndex{\renewenvironment,\repeat,\scriptsize}
+% \DoNotIndex{\selectfont,\the,\undefined,\arabic,\do}
+% \DoNotIndex{\makeindex,\null,\number,\show,\write,\@ehc}
+% \DoNotIndex{\@author,\@ehc,\@ifstar,\@sanitize,\@title}
+% \DoNotIndex{\everypar,\if@minipage,\if@restonecol,\ifeof}
+% \DoNotIndex{\ifmmode,\lccode,\newtoks,\onecolumn,\openin}
+% \DoNotIndex{\p@,\SelfDocumenting,\settowidth}
+% \DoNotIndex{\@resetonecoltrue,\@resetonecolfalse,\bf}
+% \DoNotIndex{\clearpage,\closein,\lowercase,\@tempdima}
+% \DoNotIndex{\@inlabelfalse,\selectfont,\mathcode}
+% \DoNotIndex{\newmathalphabet,\rmdefault,\bfdefault}
+% \DoNotIndex{\DeclareRobustCommand,\@ifpackagewith}
+% \DoNotIndex{\SIL@doctype}
+% \DoNotIndex{\SIL@docname}
+% \DoNotIndex{\SIL@docowner}
+% \DoNotIndex{\SIL@svgcolname}
+% \DoNotIndex{\ifcase}
+% \DoNotIndex{\SIL@svgcolval}
+% \DoNotIndex{\addbibresource}
+% \DoNotIndex{\immediate}
+% \DoNotIndex{\input}
+% \DoNotIndex{\documentclass}
+% \DoNotIndex{\pagewidth}
+% \DoNotIndex{\raggedright}
+% \DoNotIndex{\name}
+% \DoNotIndex{\SIL@topauthor}
+% \DoNotIndex{\SIL@titleoneline}
+% \DoNotIndex{\makebook}
+% \DoNotIndex{\SILmfont}
+% \DoNotIndex{\SILmfontname}
+% \DoNotIndex{\vbox}
+% \DoNotIndex{\fcolorbox}
+% \DoNotIndex{\scalebox}
+% \setcounter{tocdepth}{5}
+% \setcounter{secnumdepth}{5}
+% \makeatletter
+% \makeatother
+%
+% \GetFileInfo{bookshelf.dtx}
+% \title{The  \textsf{bookshelf} document class\thanks{%
+% This document corresponds to \textsf{bookshelf}
+% \fileversion, dated \filedate.}
+% \\[1em]\Large 
+% Turn your bibliography into a bookshelf image}
+% \author{Peter Flynn\\\normalsize Silmaril
+% Consultants\\[-.25ex]\normalsize Instant Textual Gratification
+% Division\\\normalsize(\url{peter@silmaril.ie})\\
+% Boris Veytsman\\\normalsize(\url{borisv@lk.net})}
+% \maketitle
+% \renewcommand{\abstractname}{Summary}\thispagestyle{empty}
+% \begin{abstract}
+% \parskip=0.5\baselineskip
+% \advance\parskip by 0pt plus 2pt
+% \parindent=0pt% \noindent
+% The \textsf{bookshelf} package uses
+% your \BibTeX{}
+% bibliography file into a randomly-coloured, randomly-sized
+% shelf of books, with the title and author in a randomly-chosen
+% typeface. The image (converted to {\smaller JPEG} from
+% {\smaller PDF}) can then be used as a background in
+% \emph{Zoom},
+% \emph{Teams},
+% \emph{WhatsApp} etc video calls. It
+% requires a little preliminary work with the supplied scripts to
+% set up a list of your fonts and their stylistic variants,
+% but otherwise should work on any modern \TeX{}
+% distribution.\par
+% \par\centering\includegraphics[width=.55\columnwidth, page=4]{spines.pdf}
+% \end{abstract}
+% \clearpage
+% \tableofcontents
+% \subsection*{Note on required and optional features}
+% In this document, the keywords
+%     {\sffamily {\smaller MUST}}, {\sffamily {\smaller MUST NOT}}, {\sffamily {\smaller REQUIRED}},
+%     {\sffamily {\smaller SHALL}}, {\sffamily {\smaller SHALL NOT}}, {\sffamily {\smaller SHOULD}},
+%     {\sffamily {\smaller SHOULD NOT}},
+%     {\sffamily {\smaller RECOMMENDED}},
+%     {\sffamily {\smaller MAY}}, and
+%     {\sffamily {\smaller OPTIONAL}} have a specific
+%     meaning when shown in {\sffamily {\smaller THIS TYPESTYLE}}, and
+%     {\sffamily {\smaller MUST}} be interpreted as described in
+%     RFC 2119 \parencite{rfc2119}.\par
+% When shown in normal type, these words keep their conventional
+%     contextual degree of meaning.\par
+%     \clearpage
+%     \section*{Foreword by BV}
+% \addcontentsline{toc}{section}{Foreword by BV}
+% I have spent many hours admiring colorful bookcases produced by
+% Peter Flynn's \emph{bookshelf} package.  They helped me to survive
+% many boring remote meetings during the {\smaller COVID} pandemic and its
+% aftermath.  However, since my library had books in different
+% languages, I wanted to showcase them as well.  I started to write
+% patches for the package, and at some point Peter kindly decided to
+% transfer the maintenance to me.
+%
+% I described the project at {\smaller
+% TUG}~2024~\parencite{Bookshelf2024}.  At present the following
+% changes has been implemented:
+% \begin{enumerate}
+% \item The package now can typeset book spines in any language.  It
+% automatically selects a random font capable to typeset a given
+% spine.
+% \item The new |bookshelf-listallfonts| script lists all system and \TeX\
+% fonts with ``interesting'' variants, while the new |bookshelf-mkfontsel|
+% script populates the |fontsel| directory.
+% \item The package now understands fonts in OTF, TTF
+% \item The switch from Biber to Bib\TeX\ made the processing much
+% faster, and eliminated the need for the separate |entries.tex| file:
+% now the |.bbl| file has the right format.
+% \item The switch from \emph{fontspec} to primitive font loading also
+%   made the processing faster---and increased the number of fonts we
+%   can display.
+% \end{enumerate}
+%
+% There is, however, a price for these improvements: now the package
+% is Lua\LaTeX-only. 
+%
+% \bigskip
+% \emph{Boris Veytsman, October 2024}
+% \clearpage
+% \addcontentsline{toc}{section}{Latest changes}
+% \section*{Latest changes}
+% \subsection*{v.1.0(2025/10/02)}
+% New maintainer.  Several rewrites.
+% \subsection*{v.0.5 (2020-05-24)}
+% \paragraph*{Finished initial testing}
+% \begin{itemize}
+% \item Replaced \textsf{hyperref}
+% with \textsf{hypdoc} to avoid
+% \emph{makeindex} bug\par
+% \end{itemize}
+% \subsection*{v.0.1 (2020-05-7)}
+% \paragraph*{First packaged draft}
+% \begin{itemize}
+% \item Done manually from .tex file\par
+% \end{itemize}
+% \subsection*{v.0.4 (2020-05-19)}
+% \paragraph*{Completed documentation}
+% \begin{itemize}
+% \item Updated note on bug in
+% \emph{biber} when processing
+% {\ttfamily{}sgml.bib}\par
+% \item Removed {\ttfamily{}sgml.bib} as example
+% until problems are resolved\par
+% \item Backtracked on attempt to use the monographic
+% title for articles, chapters, etc\par
+% \item Revised notes on production\par
+% \end{itemize}
+% \subsection*{v.0.3 (2020-05-14)}
+% \paragraph*{Finished first pass on documentation}
+% \begin{itemize}
+% \item Done preliminary testing\par
+% \item Script adapted for Mac OS X\par
+% \end{itemize}
+% \subsection*{Acknowledgments}
+% Thanks to many people for the original
+% suggestion; and to Isabel Yorke, Bethan Tovey-Walsh,
+% Nelson Beebe, The \LaTeX{} Ninja, Stephan Lukasczyk,
+% and others for their thesis bibliographies and
+% testing comments.\par
+% \clearpage
+% \section{Documentation}
+% During the era of the {\smaller COVID-19} lockdown, the popularity
+% of group video messaging grew rapidly, both for business and
+% domestic use. As people sought for what they believed to be more
+% representative backgrounds than a messy kitchen, an untidy workroom,
+% or a sterile blank wall, a well-populated bookshelf was a frequent
+% choice.\par
+% This package is for those who cannot use (or don't have, or don't
+% want to use) such a bookshelf, but can still lay their hands on a
+% bibliography or reference list in \BibTeX{} format — perhaps from a
+% recent or long-forgotten thesis, book, article, or other
+% document.\par
+% You also may want to showcase your electronic library.  Many
+% programs like \emph{Calibre}~\parencite{Calibre} can export the list
+% of your electronic books in Bib\TeX\ format.  This is how the sample
+% library |spines.pdf| was created.\par
+% Another important use of this package is to provide a diversion
+% during long boring remote meetings.  Try to guess the font the given
+% spine was typeset with---and use these tiny numbers under the books
+% to check your knowledge!
+% \par\begingroup
+%   \fboxsep1em\centering
+%   \fbox{\begin{minipage}{0.8\columnwidth}\sffamily
+%  \raggedright\parindent0pt
+%  \parskip=.5\baselineskip
+% \subsubsection*{\sffamily Lua\LaTeX{}}
+% To avoid problems with accented 
+%   characters, and to make it easier to maintain,
+%   this document class uses only Lua\LaTeX.\par
+% It will not work with the
+%   \emph{pdflatex} or \XeTeX.\par
+% \end{minipage}}\par\endgroup
+% This is a work-in-progress: there are bugs (see \vref{bugs}).\par
+% \subsection{What the package does}
+% The \textsf{bookshelf} package
+%   generates what looks like shelves of book spines
+%   from your list of references, using random
+%   dimensions (within specified limits) in random but
+%   contrasting colors, with a randomly-selected
+%   typeface.\par
+% It does this by creating a box (rectangle) for each
+%   entry in your list, assigning colors to the background and
+%   foreground, deciding on the layout and font, and then
+%   stacking the boxes side-by-side as if they were letters on a
+%   line.\par
+% \subsection{Preparation}
+% To get things ready for this, you need to install this
+%   document class, and provide the following data:
+% \begin{enumerate}
+% \item The list of book as a \BibTeX{} file.  
+% \item A list of all your usable text fonts and the total number of
+% them. 
+% \item A list of all the colors to choose from.
+% \end{enumerate}
+% These are explained in more detail in the subsections
+%   below.\par
+% \subsubsection{Your \BibTeX{} file}
+% Your \BibTeX{} ({\ttfamily{}.bib}) file,
+%     suitable for use with \emph{biber}
+%     rather than \emph{bibtex}.\par
+% You may need to replace all the
+%     old-style symbolic notation accented characters like
+%     \verb|{\"a}| for
+%     `ä' and
+%     \verb|{\l}| for
+%     `ł'. \par
+% If you have a bibliography in
+%     \emph{EndNote},
+%     \emph{Mendeley},
+%     \emph{Zotero},
+%     \emph{ProCite},
+%     \emph{Reference Manager},
+%     etc, you should be able to export it in either
+%     \BibTeX{} or {\smaller RIS} format. A
+%     {\smaller RIS} file can easily be
+%     converted to \BibTeX{} by opening it in
+%     \emph{JabRef} and saving it
+%     as \BibTeX{}.\par
+% \subsubsection{Font file list}\label{fontfiles}
+% A set of 2–line files in a subdirectory called
+%     |fontsel| representing of all the
+%     usable text fonts on your system.\par
+% Each file {\sffamily {\smaller MUST}} be
+%     numbered sequentially in its name (eg
+%     {\ttfamily{}1.tex}, {\ttfamily{}2.tex},
+%     {\ttfamily{}3.tex}, etc) and
+%     {\sffamily {\smaller MUST}} contain a |\font| command and define
+%     the name of the font, for example
+% \begin{verbatim}
+% \font\SILmfont={[/usr/local/texlive/2024/texmf-dist/fonts/opentype/public/junicode/Junicode-SmCondMediumItalic.otf]:+clig;+liga;+tlig;+swsh}\SILmfont
+% \def\SILmfontname{Junicode SmCond Medium Italic; Swash}%
+% \end{verbatim}
+% This list can be created using the scripts |bookshelf-listallfonts| and
+% |bookshelf-mkfontsel|, see~\vref{sec:scripts}.
+% \subsubsection{Maximum number of fonts}
+% A file called {\ttfamily{}pickfont.tex}
+%     containing a
+%     \verb|\setcounter{SIL@maxfont}{...}| command to
+%     set the total number of the fonts which are represented in
+%     the {\ttfamily{}fontsel} subdirectory above\par
+% This file can be created using the scripts |bookshelf-listallfonts| and
+% |bookshelf-mkfontsel|, see~\vref{sec:scripts}.
+% \subsubsection{List of colors}
+% A list of all the colors represented by the
+%     {\smaller SVG} palette used by the
+%     \textsf{xcolor} package: the file is called
+%     called {\ttfamily{}bookshelf-svgnam.tex}.
+%     This contains three definitions:\par
+% \begin{enumerate}
+% \item the command {\ttfamily{}\textbackslash{}SIL@svgcolname}
+% which uses an {\ttfamily{}\textbackslash{}ifcase} command to
+% return the name of the \emph{n}th color
+% in alphabetical order;\par
+% \item the command {\ttfamily{}\textbackslash{}SIL@svgcolval} which
+% does the same to return the brightness value of that
+% color, computed by the formula on \vpageref{bright} (see script for
+% details);\par
+% \item the counter {\ttfamily{}SIL@maxcolno} which holds
+% the number of colors available.\par
+% \end{enumerate}
+% This file is included in the distribution.
+%
+% In the previous versions of the ditribution it was created with the
+% from |svgnam.def| database.  The script |svgnam.sh| is retained in
+% the distribution and can be used to recreate the file.
+%
+% \subsection{Producing your bookshelf}
+%
+% \subsubsection{Producing the list of fonts}
+% \label{sec:scripts}
+%
+% Each system has its own fonts installed, so you need to create the
+% list of fonts installed on \emph{your} system.  It is done in three
+% steps.
+% \begin{enumerate}
+% \item Update the database of fonts known to Lua\TeX:
+% \begin{verbatim}
+% luaotfload-tool --update --force
+% \end{verbatim}
+% The key |--force| forces the update even if Lua\TeX\ thinks it is
+% not necessary: sometimes it is mistaken.
+% \item Create the list of the usable fonts and font variants:
+% \begin{verbatim}
+% bookshelf-listallfonts [options] > allfonts
+% \end{verbatim}
+% The script lists all fonts in {\smaller OTF, TTF} or {\smaller TTC}
+% format, known to Lua\LaTeX.  For scripts in {\smaller OTF} and
+% {\smaller TTF} format it looks at the ``interesting'' Open Type
+% features like swash and stylistic variant and lists them too.  This
+% means that the bookshelf might have spines typeset in the different
+% variants of the same font---they are considered different fonts!
+% You can change the list of feaures using the key |-f FEATURES_FILE|;
+% see the |doc| directory for an example.  The script tries to exclude
+% broken font files;  you can change the list with the key
+% |-x EXCLUDED_PATTERNS|.  Again, there is an example in the |doc|
+% directory.
+% \item Create the |fontsel| directory and the file |pickfont.tex|
+% using the command
+% \begin{verbatim}
+% bookshelf-mkfontsel allfonts
+% \end{verbatim}
+% \end{enumerate}
+%
+% \subsubsection{Driver file}
+%
+% The distribution contains the file |spines.tex|
+% \begin{verbatim}
+% % !TEX TS-program = lualatex
+% % !TEX encoding = UTF-8 Unicode
+% % !BIB TS-program = bibtex
+% \documentclass[landscape]{bookshelf}
+% \begin{document}
+% \nocite{*}
+% \bibliography{sample}
+% \bibliographystyle{bookshelf}
+% \end{document}
+% \end{verbatim}
+%
+% Change |sample| to the name of your bibliography, and typeset the
+% file using |lualatex| and | bibtex|.
+%
+% You should see your books nicely placed on the shelves.  The small
+% numbers under each book are meaningful: they are the line numbers in
+% the |allfonts| file.  You may use them if you play ``Guess the
+% font'' game.
+%
+% \subsubsection{Options}
+% The class comes set for making an
+%     \textbf{\texttt{a0paper}} page (1189 mm × 841 mm
+%     or 4′ 11″ × 2′ 10″) in
+%     \textbf{\texttt{landscape}} mode, suitable for
+%     large bibliographies. If you have a smaller
+%     {\ttfamily{}.bib} file, or if you want
+%     fewer volumes per page, you can change the paper
+%     size option in the
+%     {\ttfamily{}\textbackslash{}documentclass} command to a
+%     smaller one: all the `A'
+%     sizes from 5 to 0 are supported, plus the common
+%     US office sizes including Ledger (Tabloid).\par
+% There is also a \textbf{\texttt{portrait}} option to
+%     produce the page in that format instead of
+%     landscape.\par
+%
+% \subsection{Bugs}\label{bugs}
+% Some things don't yet work as they should, and
+%   there are some features that may or may not make
+%   the final cut.  Please report bugs at
+%   \url{https://github.com/borisveytsman/bookshelf}\par 
+%
+%
+% \StopEventually{\label{endcode}%
+%   \clearpage
+%   \newgeometry{left=3cm}%
+%   \addcontentsline{toc}{section}{Change History}%
+%   \label{changehistory}%
+%   \PrintChanges
+%   \clearpage
+%   \label{codeindex}%
+%   \addcontentsline{toc}{section}{Index}%
+%   \PrintIndex}
+% \addtolength{\CPKrevmarg}{\widthof{\LabelFont{AddToShipoutPictureBG}}}
+% \newgeometry{left=\CPKrevmarg}
+% \message{Margin reset to \the\CPKrevmarg, to fit <AddToShipoutPictureBG>}
+% \iffalse
+%<*class>
+% \fi
+% \clearpage
+% \section{Implementation}\label{setup}
+% \par
+% \subsection{Auto-initialisation}\label{setup:autoinit}
+% This section is added automatically by \textit{ClassPack} 
+% as a preamble to all classes and style packages. 
+% The \textsf{fixltx2e} package, which used to be included
+% automatically, is no longer preloaded, as its
+% features are now a part of the latest \LaTeXe\ kernel.\par
+% The code starts with identity and requirements which are 
+% generated automatically as needed by the Doc\TeX\ system.
+% For details see the \textsf{ltxdoc} package documentation.
+% \par\smallskip
+% \begingroup\color{DarkRed}\footnotesize
+% \leavevmode\enspace{\scriptsize1}\quad{\ttfamily\textbackslash NeedsTeXFormat\{LaTeX2e\}[2017/04/15]}\\
+% \leavevmode\enspace{\scriptsize2}\quad{\ttfamily\textbackslash ProvidesClass\{bookshelf\}[2020/05/24 v0.5}\\
+% \leavevmode\enspace{\scriptsize3}\qquad{\ttfamily Turn your bibliography into a bookshelf image]}\\\endgroup
+% \setcounter{CodelineNo}{3}
+% \begin{CPK@package}{fix-cm}
+% Preloaded functions to override the default \LaTeX\
+% step-size font sizes (which can still be used,
+% but are no longer restrictions).\par
+%    \begin{macrocode}
+\RequirePackage{fix-cm}
+%    \end{macrocode}
+% \end{CPK@package}
+% \begin{CPK@option}{svgnames}
+% Pass the \textbf{\texttt{svgnames}} option to the
+% \textsf{xcolor} package if that gets loaded later.
+% This avoids a conflict with any other packages
+% (eg \textsf{hyperref}) which use their own default
+% is when they load \textsf{xcolor}.\par
+%    \begin{macrocode}
+  \PassOptionsToPackage{svgnames}{xcolor}
+%    \end{macrocode}
+% \end{CPK@option}
+% \subsection{Options}\label{options}
+% \iffalse
+%% 
+%% ****************************************************************** 
+%% 
+%% Options
+% \fi
+% The paper size and orientation are the only two valid
+%   options, both of which are the same as the standard
+%   documentclass options, and will be passed to the underlying
+%   class automatically, but they need recording so that they
+%   can be used by the \textsf{geometry}
+%   package. The default is for A0 paper, landscape.\par
+%    \begin{macrocode}
+\def\SIL@paper{a0paper}%
+\DeclareOption{a0paper}{%
+    \def\SIL@paper{a0paper}%
+    \setlength\paperheight {1189mm}%
+    \setlength\paperwidth  {841mm}}
+\DeclareOption{a1paper}{%
+    \def\SIL@paper{a1paper}%
+    \setlength\paperheight {841mm}%
+    \setlength\paperwidth  {594mm}}
+\DeclareOption{a2paper}{%
+    \def\SIL@paper{a2paper}%
+    \setlength\paperheight {594mm}%
+    \setlength\paperwidth  {420mm}}
+\DeclareOption{a3paper}{%
+    \def\SIL@paper{a3paper}%
+    \setlength\paperheight {420mm}%
+    \setlength\paperwidth  {297mm}}
+\DeclareOption{a4paper}{%
+    \def\SIL@paper{a4paper}%
+    \setlength\paperheight {297mm}%
+    \setlength\paperwidth  {210mm}}
+\DeclareOption{a5paper}{%
+    \def\SIL@paper{a5paper}%
+    \setlength\paperheight {210mm}%
+    \setlength\paperwidth  {148mm}}
+\DeclareOption{b5paper}{%
+    \def\SIL@paper{b5paper}%
+    \setlength\paperheight {250mm}%
+    \setlength\paperwidth  {176mm}}
+\DeclareOption{letterpaper}{%
+    \def\SIL@paper{letterpaper}%
+    \setlength\paperheight {11in}%
+    \setlength\paperwidth  {8.5in}}
+\DeclareOption{legalpaper}{%
+    \def\SIL@paper{legalpaper}%
+    \setlength\paperheight {14in}%
+    \setlength\paperwidth  {8.5in}}
+\DeclareOption{executivepaper}{%
+    \def\SIL@paper{executivepaper}%
+    \setlength\paperheight {10.5in}%
+    \setlength\paperwidth  {7.25in}}
+\DeclareOption{ledgerpaper}{%
+    \def\SIL@paper{ledgerpaper}%
+    \setlength\paperheight {17in}%
+    \setlength\paperwidth  {11in}}
+\DeclareOption{tabloidpaper}{%
+    \def\SIL@paper{tabloidpaper}%
+    \setlength\paperheight {17in}%
+    \setlength\paperwidth  {11in}}
+\def\SIL@orient{landscape}%
+\DeclareOption{landscape}{%
+    \def\SIL@orient{landscape}%
+    \setlength\@tempdima   {\paperheight}%
+    \setlength\paperheight {\paperwidth}%
+    \setlength\paperwidth  {\@tempdima}}
+\DeclareOption{portrait}{%
+    \def\SIL@orient{}}
+%    \end{macrocode}
+% \subsection{Load the document base class}\label{classload}
+% \iffalse
+%% 
+%% ****************************************************************** 
+%% 
+%% Load the document base class
+% \fi
+% This class is based on the standard \LaTeX{}
+%   \DescribeClass{report}\textsf{report} class, with no special options
+%   except the extra sizes defined above. The default is A0
+%   paper, landscape.\par
+%    \begin{macrocode}
+\DeclareOption*{\ClassWarning{bookshelf}{%
+    Unknown option `\CurrentOption', please RTFM}}
+\ProcessOptions\relax
+\LoadClass{report}
+%    \end{macrocode}
+%\iffalse
+%%
+%% Packages required for the class or package
+%% 
+% \fi
+% \subsection{Packages required for the class or
+%     package}\label{clspackages}
+% \begin{CPK@package}{fontspec}
+% Font specification setup for use with \XeLaTeX{}.
+% \iffalse
+%% Font specification setup for use with \XeLaTeX{}.
+% \fi
+%    \begin{macrocode}
+\RequirePackage{fontspec}%
+%    \end{macrocode}
+% \end{CPK@package}
+% \begin{CPK@package}{calc}
+% Required for calculations involving lengths or counters,
+% such as changes to widths for margin adjustment.
+% \iffalse
+%% Required for calculations involving lengths or counters, such as changes to widths for margin adjustment.
+% \fi
+%    \begin{macrocode}
+\RequirePackage{calc}%
+%    \end{macrocode}
+% \end{CPK@package}
+% \begin{CPK@package}{fp}
+% Used for fixed-point calculations;
+% \iffalse
+%% Used for fixed-point calculations
+% \fi
+%    \begin{macrocode}
+\RequirePackage{fp}%
+%    \end{macrocode}
+% \end{CPK@package}
+% \begin{CPK@package}{graphicx}
+% Provide for graphics (PNG, JPG, or PDF format (only) for
+% pdflatex; EPS format (only) for standard \LaTeX{}).
+% \iffalse
+%% Provide for graphics (PNG, JPG, or PDF format (only) for pdflatex; EPS format (only) for standard \LaTeX{}).
+% \fi
+%    \begin{macrocode}
+\RequirePackage{graphicx}%
+%    \end{macrocode}
+% \end{CPK@package}
+% \begin{CPK@package}{xcolor}
+% Provide color.
+% \iffalse
+%% Provide color.
+% \fi
+%    \begin{macrocode}
+\RequirePackage{xcolor}%
+  \@ifundefined{T}{%
+	    \newcommand{\T}[2]{{\fontencoding{T1}%
+	      \selectfont#2}}}{}
+%    \end{macrocode}
+% There seems to be a bug in the T1 encoding of some package
+% (unidentified, but possibly \textsf{xcolor}) which
+% uses the command {\ttfamily{}\textbackslash{}T1}, which is an
+% impossibility (no digits allowed in command names). So we fake
+% it here to stop \LaTeX{} complaining, by dropping the first
+% argument on the floor.
+% \end{CPK@package}
+% \begin{CPK@package}{eso-pic}
+% Add picture commands (or backgrounds) to every page.
+% \iffalse
+%% Add picture commands (or backgrounds) to every page.
+% \fi
+%    \begin{macrocode}
+\RequirePackage{eso-pic}%
+%    \end{macrocode}
+% \end{CPK@package}
+% \begin{CPK@package}{geometry}
+% Package for establishing margins and text area.
+% \iffalse
+%% Package for establishing margins and text area.
+% \fi
+%    \begin{macrocode}
+\RequirePackage[\SIL@paper,\SIL@orient,nohead,
+  nofoot,margin=1cm]{geometry}%
+%    \end{macrocode}
+% \end{CPK@package}
+% 
+% \subsection{Non-package resources}
+% \iffalse
+%% 
+%% ****************************************************************** 
+%% 
+%% Non-package resources
+% \fi
+% \begin{CPK@file}{random.tex}\label{file--random.tex}
+% There is one resource not available in packaged form,
+%     the module that lets \LaTeX{} create random values. This is
+%     in {\ttfamily{}random.tex}, which on the author's
+%     system is hiding in a directory
+%     {\ttfamily{}texmf/tex/generic/genmisc/}, in the
+%     {\ttfamily{}texmf-dist} tree, and indexed by an
+%     {\ttfamily{}ls-R} database, so it should therefore
+%     be findable by any \TeX{} system.\par
+%    \begin{macrocode}
+\input{random.tex}
+%    \end{macrocode}
+% \end{CPK@file}
+% \subsection{The code}
+% \iffalse
+%% 
+%% ****************************************************************** 
+%% 
+%% The code
+% \fi
+% This is beta software: the code is messy and covered in
+%   tracing output.\par
+% \subsubsection{Font selection}\label{fonts}
+% \begin{CPK@counter}{maxfont}\label{counter--maxfont}
+% This is set in the {\ttfamily{}\textbackslash{}input} file
+%       {\ttfamily{}pickfont.tex}, which is created by
+%       the preparatory data script
+%       {\ttfamily{}prepdata.sh}. It is the number of
+%       working text fonts found on the system.\par
+%    \begin{macrocode}
+\newcounter{SIL@maxfont}
+%    \end{macrocode}
+% \end{CPK@counter}
+% \begin{CPK@counter}{SIL@fontsel}\label{counter--SIL@fontsel}
+% This is set to a random number between one and
+%       \DescribeCounter{SIL@maxfont}{\ttfamily{}SIL@maxfont}, and used as the
+%       name of the file containing the font name.\par
+%    \begin{macrocode}
+\newcounter{SIL@fontsel}
+%    \end{macrocode}
+% \end{CPK@counter}
+% \begin{CPK@file}{pickfont.tex}\label{file--pickfont.tex}
+% This file is created by the preparatory data script
+%       {\ttfamily{}prepdata.sh} after it sets up the
+%       subdirectory list of valid text fonts. It sets the value
+%       of \DescribeCounter{SIL@maxfont}{\ttfamily{}SIL@maxfont}.\par
+%    \begin{macrocode}
+\input{pickfont.tex}
+%    \end{macrocode}
+% \end{CPK@file}
+% \subsubsection{Color selection}\label{color}
+% \begin{CPK@counter}{SIL@maxcolno}\label{counter--SIL@maxcolno}
+% This value is set at the end of the file
+%       {\ttfamily{}bookshelf-svgnam.tex}. This is the number of
+%       color names found by the routine in
+%       {\ttfamily{}prepdata.sh} which extracts the color
+%       names.\par
+%    \begin{macrocode}
+\newcounter{SIL@maxcolno}
+%    \end{macrocode}
+% \end{CPK@counter}
+% \begin{CPK@file}{bookshelf-svgnam.tex}\label{file--bookshelf-svgnam.tex}
+% The preparatory data script
+%       {\ttfamily{}prepdata.sh} retrieves the colors named
+%       in the \textbf{\texttt{svgnames}} option to the
+%       \textsf{xcolor} package and instantiates them
+%       as a \LaTeX{} {\ttfamily{}\textbackslash{}ifcase} list in the file
+%       {\ttfamily{}bookshelf-svgnam.tex} as the command
+%       {\ttfamily{}\textbackslash{}SIL@svgcolname}.\par
+%    \begin{macrocode}
+\input{bookshelf-svgnam.tex}
+%    \end{macrocode}
+% \end{CPK@file}
+% \begin{CPK@counter}{SIL@loopcount}\label{counter--SIL@loopcount}
+% The random font selection is done in a loop because
+%       of the need to test the values. This counter counts the
+%       iterations…\par
+%    \begin{macrocode}
+\newcounter{SIL@loopcount}
+%    \end{macrocode}
+% \end{CPK@counter}
+% \begin{CPK@counter}{SIL@maxloop}\label{counter--SIL@maxloop}
+% …and this one the limit.\par
+%    \begin{macrocode}
+\newcounter{SIL@maxloop}
+%    \end{macrocode}
+% \end{CPK@counter}
+% \begin{CPK@counter}{SIL@bgcolno}\label{counter--SIL@bgcolno}
+% The colors are selected numerically. This value is
+%       the background color of the spine of a book.\par
+%    \begin{macrocode}
+\newcounter{SIL@bgcolno}
+%    \end{macrocode}
+% \end{CPK@counter}
+% \begin{CPK@counter}{SIL@fgcolno}\label{counter--SIL@fgcolno}
+% And this is the foreground color, used to typeset
+%       the title and author on the spine of a book.\par
+%    \begin{macrocode}
+\newcounter{SIL@fgcolno}
+%    \end{macrocode}
+% \end{CPK@counter}
+% \begin{CPK@length}{\splitpoint}\label{length--splitpoint}
+% To make sure that \DescribeCounter{SIL@bgcolno}{\ttfamily{}SIL@bgcolno} and \DescribeCounter{SIL@fgcolno}{\ttfamily{}SIL@fgcolno}
+%       are distinct, we will need to pick one
+%       `dark' and one
+%       `light', crudely distinguished by
+%       examining their `brightness'
+%       (monochrome intensity value) using the formula
+%       \label{bright}\(b=\sqrt(.241r^2+.691g^2+.068b^2)\) due to \href{https://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx}{Nir 
+% Dobovizki}. From inspection, the modal point of
+%       the {\smaller SVG} values occurs around 0.6, so
+%       use use this to determine if the randomly-selected color
+%       is `dark' or
+%       `light'. Because it's a decimal
+%       fraction, we express it as a dimension and strip off the
+%       `pt' later.\par
+%    \begin{macrocode}
+\newlength{\SIL@splitpoint}
+\setlength{\SIL@splitpoint}{0.6pt}
+%    \end{macrocode}
+% \end{CPK@length}
+% \begin{CPK@macro}{\SIL@bgcol}\label{macro--SIL@bgcol}
+% We establish defaults for the background color…\par
+%    \begin{macrocode}
+\def\SIL@bgcol{White}
+%    \end{macrocode}
+% \end{CPK@macro}
+% \begin{CPK@macro}{\SIL@fgcol}\label{macro--SIL@fgcol}
+% …and the foreground color.\par
+%    \begin{macrocode}
+\def\SIL@fgcol{Black}
+%    \end{macrocode}
+% \end{CPK@macro}
+% \begin{CPK@length}{\SIL@bgval}\label{length--SIL@bgval}
+% The values computed by the
+%       {\ttfamily{}prepdata.sh} script and stored in
+%       {\ttfamily{}bookshelf-svgnam.tex} are decimal fractions,
+%       to they need to be retrieved as lengths. This is the
+%       background value…\par
+%    \begin{macrocode}
+\newlength{\SIL@bgval}
+%    \end{macrocode}
+% \end{CPK@length}
+% \begin{CPK@length}{\SIL@fgval}\label{length--SIL@fgval}
+% …and the foreground value.\par
+%    \begin{macrocode}
+\newlength{\SIL@fgval}
+%    \end{macrocode}
+% \end{CPK@length}
+% \begin{CPK@length}{\SIL@bgfgdiff}\label{length--SIL@bgfgdiff}
+% The `dark' or
+%       `light' test discussed above also
+%       needs to test if the values are too close to the
+%       splitpoint. By examination, if the values have an
+%       absolute difference of 0.2 they should be visually
+%       distinct enough. The difference is calculated and stored
+%       in this length variable, as it's a decimal fraction.\par
+%    \begin{macrocode}
+\newlength{\SIL@bgfgdiff}
+%    \end{macrocode}
+% \end{CPK@length}
+% \begin{CPK@switch}{\SIL@notyetcols}\label{switch--SIL@notyetcols}
+% In the testing for colors, the nested conditionals
+%       set this switch true or false, so that it can be used to
+%       control the iteration through successive attempts to find
+%       suitable random values.\par
+%    \begin{macrocode}
+\newif\ifSIL@notyetcols
+%    \end{macrocode}
+% \end{CPK@switch}
+% \subsubsection{Page border setup}\label{borders}
+% \begin{CPK@macro}{\AddToShipoutPictureBG}\label{macro--AddToShipoutPictureBG}
+% The page background color is set to a pale brown
+%       roughly matching the pine veneer of IKEA bookcases, with
+%       the inner page (behind the books) in a dark shadow
+%       brown. The technique for imposing a colored margin is
+%       due to \href{https://tex.stackexchange.com/questions/7725/how-to-set-a-certain-color-other-than-white-to-margin-areas}{Ulrike 
+% Fischer} and uses the commands from the
+%       \textsf{eso-pic} package.\par
+%    \begin{macrocode}
+\pagecolor{BurlyWood}
+\AddToShipoutPictureBG{%
+ \AtTextLowerLeft{\color{SaddleBrown}%
+   \rule[-\footskip]{\textwidth}{%
+     \dimexpr\textheight+\footskip}}}
+%    \end{macrocode}
+% \end{CPK@macro}
+% \subsubsection{Size and shape}\label{sizeshape}
+% Each book is assigned a random height and width,
+%     within the bounds set by the maxima and minima. The final
+%     dimensions may then be modified by the choice of layout
+%     and font.\par
+%    \begin{macrocode}
+\newlength{\SIL@bookheight}
+\newlength{\SIL@bookwidth}
+\newlength{\SIL@minbookwidth}
+\newlength{\SIL@maxbookwidth}
+\newlength{\SIL@minbookheight}
+\newlength{\SIL@maxbookheight}
+%    \end{macrocode}
+% \subsubsection{Title and author dimensions}\label{titling}
+% The title and author need to be measured, and
+%     decisions are made about what size they need to be. The
+%     two layouts (author separately at the top, and author
+%     inline to title) are distinguished with the
+%     {\ttfamily{}\textbackslash{}SIL@topauthor} conditional. If the title
+%     (with or without the author can fit on one line (rather
+%     than multiple lines) this is signalled with the
+%     {\ttfamily{}\textbackslash{}SIL@titleoneline} conditional.\par
+%    \begin{macrocode}
+\newlength{\SIL@titlewidth}
+\newlength{\SIL@authorwidth}
+\newlength{\SIL@titleheight}
+\newlength{\SIL@authorheight}
+\newlength{\SIL@scaledtitle}
+\newlength{\SIL@heightfortitle}
+\newbox\SIL@titlebox
+\newif\ifSIL@topauthor
+\newif\ifSIL@titleoneline
+%    \end{macrocode}
+% \subsubsection{Handling the math}
+% \begin{CPK@counter}{SIL@scale}\label{counter--SIL@scale}
+% To extract the integer part of a fixed-point value,
+%       we define a simple strip which uses the integer and
+%       throws away the rest. The integer ends up in this
+%       counter.\par
+%    \begin{macrocode}
+\newcounter{SIL@scale}
+%    \end{macrocode}
+% \end{CPK@counter}
+% \begin{CPK@macro}{\SIL@scaleint}\label{macro--SIL@scaleint}
+% The integer macro returns the counter above.\par
+%    \begin{macrocode}
+\def\SIL@scaleint#1.#2\sentinel{%
+   \setcounter{SIL@scale}{#1}}
+%    \end{macrocode}
+% \end{CPK@macro}
+% \subsubsection{Settings}
+% We set the space around a box and the thickness of the
+%   rule, and remove the page numbers.\par
+%    \begin{macrocode}
+\fboxsep1em\fboxrule.1pt
+\pagestyle{empty}
+%    \end{macrocode}
+%
+% \subsubsection{Auxillary macro: fitting text in a box}
+%
+% \begin{CPK@macro}{\SIL@fittext}\label{macro--SIL@fittext}
+% For typesetting title we use an auxillary macro |\SIL@fittext|.  It
+% has four parameters: the text to be typeset, the width ($W$), the
+% height $H$, and the box $W\times H$ to put the text into.  We want
+% to get the maximal font size that still fits in the box.
+% Unfortunately there is a limitation on the maximal number of fonts
+% \TeX\ can handle (currently 9000 by default).  Since each size
+% change counts as a new font, things can quickly go out of hand.
+% Therefore instead of scaling the font we scale the box.
+%
+% So our aim is to find the maximal scaling factor $S$ such as (1)~the
+% text is typeset in a $w\times h$ box, (2)~the text box scales to the
+% given width, $W=Sw$, (3)~the text box does not overflow the height,
+% $H\le Sh$.
+%
+% The algorithm is the following:
+% \begin{enumerate}
+% \item If the text fits in one line, we expand the box for the line
+% to occupy $W$, setting $S=W/w$.
+% \item Otherwise, we try to typeset the text in the box of horizontal
+%   size $W$ ($S=1$) and calculate box height $h$. We determine how
+%   much we can expand or shrink the box, setting $S=H/h$. 
+% \item We typeset the text in the box of width $w=W/S$.
+% \item Due to changed line breaks its height $h$ might be higher than
+% $H/S$. In this case we start to decrease $S$ by 5\% on each step
+% and repeat typesetting until $w\le W/S$
+% \end{enumerate}
+%
+% Now, the implementation.
+%
+% First, we calculate $W$ and $H$ by stripping the pt dimension
+%    \begin{macrocode}
+\def\SIL@fittext#1#2#3#4{%
+  \@tempdima=#2\relax
+  \edef\SIL@W{\strip@pt\@tempdima}%
+  \@tempdima=#3\relax
+  \edef\SIL@H{\strip@pt\@tempdima}%  
+%    \end{macrocode}
+% Try to set up the text in one line
+%    \begin{macrocode}
+  \setbox#4=\hbox{\raggedright\noindent#1}%
+  \@tempdima=\wd#4\relax
+  \edef\SIL@w{\strip@pt\@tempdima}%
+  \ifdim#2>\@tempdima\relax
+    \FPeval\SIL@S{\SIL@W/\SIL@w}%
+    \typeout{Text fits in one line: have H=\SIL@w pt, want \SIL@W pt}%
+    \typeout{Trying S=\SIL@S}%
+  \else
+%    \end{macrocode}
+% We start with the scale factor $S=1$.  We add |\vskip0pt| to the
+% text to set the box depth to zero.
+%    \begin{macrocode}
+    \typeout{Text does not fit in one line}%
+    \def\SIL@S{1}%
+    \FPeval\SIL@w{\SIL@W/\SIL@S}%
+    \setbox#4=\vbox{\hsize=\SIL@w pt\relax      
+      \raggedright\noindent#1\vskip0pt}%
+    \@tempdima=\ht#4\relax
+    \edef\SIL@h{\strip@pt\@tempdima}%
+    \@tempdima = \SIL@S \@tempdima\relax
+    \typeout{Trying S=\SIL@S.  Got H=\the\@tempdima.  Want \SIL@H pt}%
+    \FPeval\SIL@S{\SIL@H/\SIL@h}%
+  \fi
+%    \end{macrocode}
+% Rescaling the box for the first time.  If $S$ on the previous step
+% is below 1, start again with 1.
+%   \begin{macrocode}
+  \FPmax\SIL@S\SIL@S{1}%
+  \FPeval\SIL@w{\SIL@W/\SIL@S}%
+  \setbox#4=\vbox{\hsize=\SIL@w pt\relax      
+    \raggedright\noindent#1\vskip0pt}%
+  \@tempdima=\ht#4\relax
+  \edef\SIL@h{\strip@pt\@tempdima}%
+  \@tempdima = \SIL@S \@tempdima\relax
+  \typeout{Trying S=\SIL@S.  Got H=\the\@tempdima.  Want \SIL@H pt}%
+%    \end{macrocode}
+% If the text does not fit, keep reducing it by 5\% at a type
+%   \begin{macrocode}
+  \ifdim\@tempdima>#3\relax
+    \loop
+      \FPeval\SIL@S{0.95*\SIL@S}%
+      \FPeval\SIL@w{\SIL@W/\SIL@S}%
+      \setbox#4=\vbox{\hsize=\SIL@w pt\relax      
+        \raggedright\noindent#1\vskip0pt}%
+      \@tempdima=\ht#4\relax
+      \edef\SIL@h{\strip@pt\@tempdima}%
+      \@tempdima = \SIL@S \@tempdima\relax
+      \typeout{Trying S=\SIL@S.  Got H=\the\@tempdima.  Want \SIL@H pt}%
+    \ifdim\@tempdima>#3\repeat
+  \fi    
+%    \end{macrocode}
+% And the final typesetting
+%    \begin{macrocode}
+  \setbox#4=\vbox to #3{\hsize=#2\relax
+    \vfill
+    \noindent
+    \scalebox{\SIL@S}{\vbox{\hsize=\SIL@w pt\relax      
+        \raggedright\noindent#1\vskip0pt}}%
+    \vfill}%
+}
+%    \end{macrocode}
+% 
+% \end{CPK@macro}
+%
+%
+% \subsubsection{Selecting the font for the book}\label{fontsel}
+%
+% In a multilingual library some books can be typeset only in specific
+% fonts. Here we randomly select a font to typeset the given book.
+%
+% We define a macro that checks whether the given string can be
+% typeset in the font just defined by fontspec.
+%
+% We write the program in expl3 syntax because it has nice mapping
+% subroutines and becasue fontspec internal variables are in expl3.
+% 
+%    \begin{macrocode}
+\ExplSyntaxOn
+%    \end{macrocode}
+% An auxillary routine checking whether the character can be typeset
+% with the current font.  Copied from fontspec internals
+%    \begin{macrocode}
+\prg_new_conditional:Nnn \__SIL_primitive_font_glyph_if_exists:n  {TF,F}
+  {
+    \tex_iffontchar:D \SILmfont `#1 \scan_stop:
+      \prg_return_true:
+    \else:
+      \prg_return_false:
+    \fi:
+  }
+%    \end{macrocode}
+% And the document command
+%    \begin{macrocode}
+\prg_new_conditional:Nnn \__SIL_can_typeset:n {TF}
+  {  
+   \typeout{Trying ~ to ~ typeset ~ #1}
+    \bool_set_true:N \l_tmpa_bool
+    \str_map_inline:nn {#1} {
+      \__SIL_primitive_font_glyph_if_exists:nTF {##1} {}{
+        \bool_set_false:N \l_tmpa_bool
+        \typeout{Cannot ~ typeset ~ ##1}
+        \str_map_break:
+      }
+    }
+    \bool_if:nTF \l_tmpa_bool {\prg_return_true:} {\prg_return_false:}
+}
+
+\cs_generate_variant:Nn \__SIL_can_typeset:nTF {x}
+
+\NewDocumentCommand\CanTypesetTF { m m m}{
+  \__SIL_can_typeset:xTF{#1}{#2}{#3}
+}
+\ExplSyntaxOff
+%    \end{macrocode}
+%
+% We define some counters and flags for the font selection
+%    \begin{macrocode}
+\def\SIL@maxfonttries{100}
+\newif\ifSIL@fontfound
+%    \end{macrocode}
+%
+%
+% Another twist is that we cannot have too many fonts used.  Therefore
+% we add all fontsel files to a stack, and after having 
+% 2100 of them, we reuse opened files.  Again, it is easy to do in
+% expl3.
+%    \begin{macrocode}
+\ExplSyntaxOn
+\seq_new:N \l__SIL_fontstack
+\NewDocumentCommand\AddFontToStack {m} {%
+  \seq_gput_right:Ne \l__SIL_fontstack {#1}
+}
+\NewDocumentCommand\ReuseFont {} {
+  \seq_rand_item:N \l__SIL_fontstack
+}
+\ExplSyntaxOff
+\newcount\SIL@num@fontsel@files
+\SIL@num@fontsel@files=0
+\def\SIL@max@fontsel@files{5500}
+%    \end{macrocode}
+%
+% \subsubsection{Making the book}\label{mb}
+% The {\ttfamily{}\textbackslash{}makebook} macro is huge, and
+%     handles all the detail of making a book spine. It takes
+%     two mandatory arguments: the author and the title of the
+%     book.\par 
+% \begin{CPK@macro}{\makebook}\label{macro--makebook}
+% Start by announcing the entry label and setting the
+%     values that need to be reset every time.\par
+%    \begin{macrocode}
+\newcommand{\makebook}[2]{%
+  \typeout{^^JTypesetting #1---#2}%
+  \setcounter{SIL@maxloop}{10}%
+  \setcounter{SIL@loopcount}{0}%
+% observed
+  \setlength{\SIL@minbookwidth}{5mm}%
+  \setlength{\SIL@maxbookwidth}{20mm}%
+% A5 to A4 height
+  \setlength{\SIL@minbookheight}{70mm}%
+  \setlength{\SIL@maxbookheight}{110mm}%
+  \setlength{\SIL@bookwidth}{0pt}%
+  \setlength{\SIL@bookheight}{0pt}%
+  \setlength{\SIL@heightfortitle}{0pt}%
+  \SIL@topauthorfalse
+%    \end{macrocode}
+% \end{CPK@macro}
+% \begin{CPK@macro}{\loop}\label{macro--loop}
+% Start a loop which will pick two random integers,
+%       one for background and one for foreground colors. Look
+%       these up in the {\ttfamily{}\textbackslash{}SIL@svgcolval} (in
+%       {\ttfamily{}bookshelf-svgnam.tex}) to get the brightness
+%       values, and calculate the absolute distance between
+%       them.\par
+%    \begin{macrocode}
+  \loop
+    \addtocounter{SIL@loopcount}{1}%
+    \typeout{Try \theSIL@loopcount}%
+    \setrannum{\c@SIL@bgcolno}{1}{%
+      \c@SIL@maxcolno}%
+    \typeout{BG=\theSIL@bgcolno}%
+    \setrannum{\c@SIL@fgcolno}{1}{%
+      \c@SIL@maxcolno}%
+    \typeout{FG=\theSIL@fgcolno}%
+    \setlength{\SIL@bgval}{%
+      \SIL@svgcolval{\theSIL@bgcolno}pt}%
+    \typeout{BGval=\the\SIL@bgval}%
+    \setlength{\SIL@fgval}{%
+      \SIL@svgcolval{\theSIL@fgcolno}pt}%
+    \typeout{FGval=\the\SIL@fgval}%
+    \setlength{\SIL@bgfgdiff}{%
+      \SIL@bgval - \SIL@fgval}%
+    \typeout{Split gap is \the\SIL@bgfgdiff}%
+    \ifdim\SIL@bgfgdiff<0pt
+      \setlength{\SIL@bgfgdiff}{%
+        \SIL@fgval - \SIL@bgval}%
+      \typeout{Using absolute value
+        \the\SIL@bgfgdiff}%
+    \fi
+%    \end{macrocode}
+% The colours need to be separated either side of the
+%       0.6 splitpoint value of the calculated brightness, so
+%       make this the outer test, and make the inner test for
+%       the separation difference. This will return true if the
+%       colors are separated enough, and come from opposite
+%       sides of the split point. If the loop makes \DescribeCounter{SIL@maxloop}{\ttfamily{}SIL@maxloop}
+%       iterations without finding a pair of values, use
+%       the default white on black.\par
+%    \begin{macrocode}
+    \ifdim\SIL@bgval<\SIL@splitpoint
+      \ifdim\SIL@fgval>\SIL@splitpoint
+        \ifdim\SIL@bgfgdiff>0.2pt
+          \SIL@notyetcolsfalse
+        \else
+          \SIL@notyetcolstrue
+        \fi
+      \else
+        \SIL@notyetcolstrue
+      \fi
+    \else
+      \ifdim\SIL@fgval<\SIL@splitpoint
+        \ifdim\SIL@bgfgdiff>0.2pt
+          \SIL@notyetcolsfalse
+        \else
+          \SIL@notyetcolstrue
+        \fi
+      \else
+        \SIL@notyetcolstrue
+      \fi
+    \fi
+    \typeout{BG=\theSIL@bgcolno,
+             FG=\theSIL@fgcolno}%  
+    \ifnum\c@SIL@loopcount>\c@SIL@maxloop
+      \SIL@notyetcolsfalse
+    \fi
+  \ifSIL@notyetcols\repeat
+  \def\SIL@bgcol{\SIL@svgcolname{%
+      \theSIL@bgcolno}}% 
+  \def\SIL@fgcol{\SIL@svgcolname{%
+      \theSIL@fgcolno}}%
+  \ifnum\c@SIL@loopcount>\c@SIL@maxloop
+    \typeout{Using default colors after \the\c@SIL@maxloop\space attempts}%
+    \def\SIL@bgcol{Black}%
+    \def\SIL@fgcol{White}%
+  \fi
+  \typeout{BG=\SIL@bgcol, FG=\SIL@fgcol}%
+%    \end{macrocode}
+% Now pick a random font: the files generated by
+%       {\ttfamily{}prepdata.sh} are named as integers with
+%       a {\ttfamily{}.tex} extension in the
+%       {\ttfamily{}fontsel} directory. These files load
+%       the font as {\ttfamily{}\textbackslash{}SILmfont} (no
+%       {\ttfamily{}@} sign, because this is
+%       occurring in user mode), and define
+%       {\ttfamily{}\textbackslash{}SILmfontname} as the name (for the
+%       same reason).\par
+%    \begin{macrocode}
+  \c@SIL@loopcount=1\relax
+  \loop
+    \ifnum\SIL@num@fontsel@files<\SIL@max@fontsel@files
+      \advance\SIL@num@fontsel@files by 1\relax
+      \typeout{Opening new fontsel file, counter=\the\SIL@num@fontsel@files}%
+      \setrannum{\c@SIL@fontsel}{1}{\c@SIL@maxfont}%
+      \AddFontToStack{\the\c@SIL@fontsel}%
+    \else
+      \typeout{Reusing fontsel file}%
+      \expandafter\c@SIL@fontsel\ReuseFont\relax
+    \fi
+    \input{fontsel/\theSIL@fontsel.tex}\unskip%
+    \typeout{Trying \SILmfontname, attempt \the\c@SIL@loopcount}%
+    \CanTypesetTF{#2---#1}{\global
+      \SIL@fontfoundtrue}{\global
+      \SIL@fontfoundfalse}%
+    \ifSIL@fontfound
+      \c@SIL@loopcount=\SIL@maxfonttries\relax
+    \else
+      \addtocounter{SIL@loopcount}{1}%
+    \fi
+  \ifnum\c@SIL@loopcount<\SIL@maxfonttries\repeat
+  \ifSIL@fontfound
+  \typeout{Set in \SILmfontname}%
+%    \end{macrocode}
+%
+%
+% Measure the author width and height at the default
+%       size (10pt). If the author fits in 90\% of the
+%       maximum width of the book, we put it at the top of the
+%       spine and shrink the book width to 1.1 times the set
+%       width, provided that is not less than the defined
+%       minimum width. The book width is therefore fixed at this
+%       point and won't change later.\par
+%    \begin{macrocode}
+  \settowidth{\SIL@authorwidth}{%
+              \SILmfont#1}%
+  \typeout{Author width: \the\SIL@authorwidth}%
+  \settoheight{\SIL@authorheight}{%
+               \SILmfont#1}%
+  \typeout{Author height: \the\SIL@authorheight}%
+  \ifdim\SIL@authorwidth<.9\SIL@maxbookwidth
+    \typeout{Author width is less than 90\%
+             of \the\SIL@maxbookwidth}%
+    \setlength{\SIL@bookwidth}{%
+               1.1\SIL@authorwidth}%
+    \typeout{Book width set to \the\SIL@bookwidth}%
+    \ifdim\SIL@bookwidth<\SIL@minbookwidth
+      \setlength{\SIL@bookwidth}{%
+                 \SIL@minbookwidth}%
+      \typeout{Book width reset to min
+               \the\SIL@minbookheight}%
+    \fi
+    \SIL@topauthortrue
+  \else
+    \typeout{Author won't fit in .9 of
+             \the\SIL@maxbookwidth}%
+  \fi
+%    \end{macrocode}
+% We now have enough data to make a shot at the
+%       dimensions. Pick a random book height and set the height
+%       available for the title (set sideways) to 90\% of
+%       that, so that it fits comfortably. Then if the author
+%       was earlier assigned to the top of the spine, reduce
+%       this height available for the title by 1.2 times the
+%       height occupied by the author (again, to leave a little
+%       space). In this case, the width has already been set;
+%       otherwise, generate a random width now.\par
+%    \begin{macrocode}
+  \typeout{Limits: width=\the\SIL@minbookwidth
+              –\the\SIL@maxbookwidth;
+                   height=\the\SIL@minbookheight
+              –\the\SIL@maxbookheight}%
+  \setrandim{\SIL@bookheight}%
+            {\SIL@minbookheight}%
+            {\SIL@maxbookheight}%
+  \typeout{Height generated as
+           \the\SIL@bookheight}%
+  \setlength{\SIL@heightfortitle}%
+            {.9\SIL@bookheight}%
+  \typeout{Height available for title (90\%):
+           \the\SIL@heightfortitle}%
+  \ifSIL@topauthor
+    \typeout{Width set because author fits:
+             \the\SIL@bookwidth}%
+    \addtolength{\SIL@heightfortitle}%
+                {-1.2\SIL@authorheight}%
+    \typeout{Height available for title reset to
+             \the\SIL@heightfortitle}%
+  \else
+  \setrandim{\SIL@bookwidth}%
+            {\SIL@minbookwidth}%
+            {\SIL@maxbookwidth}%
+  \typeout{Width generated as
+           \the\SIL@bookwidth}%
+  \fi
+%    \end{macrocode}
+% Finally, set a {\ttfamily{}\textbackslash{}vbox} to the
+%       defined width \emph{less} the space
+%       occupied by the {\ttfamily{}\textbackslash{}fcolorbox} border and
+%       rule; then set the {\ttfamily{}\textbackslash{}fcolorbox} with the
+%       chosen colors, with the author at the top if that's what
+%       was selected earlier, and the title below, either scaled
+%       using {\ttfamily{}\textbackslash{}scalebox} if it was a
+%       single-line title, or with the amended font size if it
+%       was a multiline title.\par
+% For a setting with the author inline to the title,
+%       just do the scaling of the title.\par
+%    \begin{macrocode}
+  \leavevmode\vbox{\hsize\SIL@bookwidth
+    \advance\hsize by2\fboxsep
+    \advance\hsize by2\fboxrule
+  \fcolorbox{black}{\SIL@bgcol}{%
+    \ifSIL@topauthor
+      \typeout{Setting with top author}%
+      \vbox to\SIL@bookheight{\hsize\SIL@bookwidth
+        \typeout{Spine is a vbox to
+          \the\SIL@bookheight,
+          hsize=\the\SIL@bookwidth}%
+        \centering
+        \SILmfont\color{\SIL@fgcol}%
+        #1%
+        \par\vfill
+        \SIL@fittext{\color{\SIL@fgcol}\SILmfont
+          #2}{\SIL@heightfortitle}{\SIL@bookwidth}%
+        {\SIL@titlebox}%
+        \rotatebox{90}{\box\SIL@titlebox}%
+        }%
+    \else
+      \typeout{Setting author inline to title}%
+      \vbox to\SIL@bookheight{\hsize\SIL@bookwidth
+        \SIL@fittext{\color{\SIL@fgcol}\SILmfont
+          #1\quad
+          ---\quad#2}{\SIL@bookheight}{\SIL@bookwidth}%
+        {\SIL@titlebox}%
+        \rotatebox{90}{\box\SIL@titlebox}%
+      }%
+    \fi
+  }%
+%    \end{macrocode}
+% At the bottom, add a colored bar to fake up the
+%       shelf the books stand on. The number is the number of
+%       the font that was selected, and is there for
+%       error-tracing purposes only.\par
+%    \begin{macrocode}
+  \\\fboxsep0pt\fboxrule0pt%
+  \colorbox{BurlyWood}{\hbox to\hsize{%
+      \hfil\vrule height3mm depth6mm width0pt
+      \normalfont\scriptsize\theSIL@fontsel\hfil}}%
+   }%
+   \penalty0
+\else % font not found
+     \typeout{Did not find font for #1--#2}%
+
+\fi}
+%    \end{macrocode}
+% \end{CPK@macro}
+%
+%    \begin{macrocode}
+\raggedright
+%    \end{macrocode}
+%
+% \iffalse
+%</class>
+% \fi
+% \nocite{*}
+% \clearpage
+% \raggedright
+% \raggedright\printbibliography
+% \Finale
+
