@@ -1,7 +1,12 @@
 \makebook{Jordan B. Peterson}{12 Rules for Life}%
 \makebook{George Orwell}{1984}%
+\makebook{Thomas Engqvist}{300 Most Important Chess Exercises}%
+\makebook{Timothy Ferriss}{The 4-Hour Workweek}%
 \makebook{Robert Greene}{48 Laws of Power}%
+\makebook{Frank McMullen}{50 Challenging Calculus Problems}%
 \makebook{Stephen Covey}{The 7 Habits of Highly Effective People}%
+\makebook{Robert L. Caplan}{Advanced Calculus}%
+\makebook{Francis Bacon}{The Advancement of Learning}%
 \makebook{Virgil}{Aeneid}%
 \makebook{Andrew Hodges}{Alan Turing: The Enigma}%
 \makebook{Dasgupta \& Papadimitriou \& Vazirani}{Algorithms}%
@@ -13,7 +18,10 @@
 \makebook{George Orwell}{Animal Farm}%
 \makebook{Lucy Maud Montgomery}{Anne of Green Gables}%
 \makebook{Nicholas Nassim Taleb}{Antifragile}%
+\makebook{Sylvia Plath}{Ariel}%
 \makebook{Mortimer J. Adler}{Aristotle for Everybody}%
+\makebook{Arnold Schwarzenegger \& Douglas Kent Hall}{Arnold: The Education of
+  a Bodybuilder}%
 \makebook{Sun Tzu}{Art of War}%
 \makebook{Sheldon Axler}{Measure, Integration \& Real Analysis}%
 \makebook{Scott Pape}{The Barefoot Investor}%
@@ -21,11 +29,16 @@
   Grammar}%
 \makebook{Jean Paul Sartre}{Being and Nothingness}%
 \makebook{Vyasa}{Bhagvad Gita}%
+\makebook{E. H. Lockwood}{A Book of Curves}%
 \makebook{Markus Zusak}{The Book Thief}%
 \makebook{Ray Bradbury}{Bradbury Stories}%
 \makebook{Stephen Hawking}{A Brief History of Time}%
 \makebook{Brian W. Kernighan \& Dennis M. Ritchie}{The C Programming Language}%
+\makebook{Frank McMullen}{Calculus with Multiple Variables}%
+\makebook{Robert A. Adams}{Calculus of Several Variables}%
+\makebook{Steven Sallas}{Calculus 1 and Several Variables}%
 \makebook{Geoffrey Chaucer}{The Canterbury Tales}%
+\makebook{Karin Reich}{Carl Friedrich Gauss}%
 \makebook{J. D. Salinger}{The Catcher in the Rye}%
 \makebook{Jeremy Silman}{The Complete Book of Chess Strategy}%
 \makebook{Cicero}{Selected Works}%
@@ -33,6 +46,8 @@
   et~al}{Introduction to Algorithms}%
 \makebook{Karl Marx \& Friedrich Engels}{The Communist Manifesto}%
 \makebook{William Shakespeare}{The Complete Works of Shakespeare}%
+\makebook{Schaum}{Complex Variables with an Introduction to Conformal Mapping
+  and Its Applications}%
 \makebook{James W. Brown \& Ruel V. Churchill}{Complex Variables and
   Applications}%
 \makebook{James F. Kurose \& Keith W. Ross}{Computer Networking: A Top-Down
@@ -51,21 +66,37 @@
 \makebook{Erich Gamma \& John Vlissides \& Richard Helm et~al}{Design Patterns:
   Elements of Reusable Object-Oriented Software}%
 \makebook{Anonymous}{Dhammapada}%
+\makebook{Frank McMullen}{Differential Equations, Essential Skills}%
+\makebook{Robert Borrelli}{Differential Equations: A Modeling Perspective}%
+\makebook{Henry J. Ricardo}{A Modern Introduction to Differential Equations}%
 \makebook{Erwin Kreyszig}{Differential Geometry}%
 \makebook{Richard Courant}{Differential and Integral Calculus}%
+\makebook{K. Rameswar}{Diophantine Equations}%
 \makebook{Susanna S. Epp}{Discrete Mathematics with Applications}%
 \makebook{Alexander Shvets}{Dive into Design Patterns}%
 \makebook{Dante Alighieri}{The Divine Comedy}%
+\makebook{Norman Wildberger}{Divine Proportions}%
 \makebook{Daniel J. Barrett}{Linux Pocket Guide}%
+\makebook{Austin Dobson}{Collected Poems of Dobson}%
 \makebook{Miguel de Cervantes}{Don Quixote}%
 \makebook{Aldous Huxley}{The Doors of Perception}%
+\makebook{Dominic Milton Trott}{The Drug Users Bible: Harm Reduction, Risk
+  Mitigation, Personal Safety}%
 \makebook{Brett Slatkin}{Effective Python}%
 \makebook{Daniel J. Barrett}{Efficient Linux at the Command Line}%
 \makebook{Trevor Hastie \& Robert Tibshirani \& Jerome Friedman}{The Elements
   of Statistical Learning}%
+\makebook{T. S. Eliot}{Selected Poems}%
 \makebook{Jane Austen}{Emma}%
+\makebook{Pasquale Baccarini}{Essential Ultimate}%
+\makebook{Fudeko Reekie}{A First Course in Japanese Workbook}%
+\makebook{Fudeko Reekie}{A First Course in Japanese}%
 \makebook{Terence McKenna}{Food of the Gods}%
 \makebook{Mykyta Chernenko}{Full-Stack Web Development with TypeScript 5}%
+\makebook{Edward G. Phillips}{Functions of a Complex Variable}%
+\makebook{Garrett Snider \& R. Kent Nagle \& Edward B. Saff}{Fundamentals of
+  Differential Equations}%
+\makebook{NHK}{Genki I Workbook}%
 \makebook{Japan Times}{Genki I}%
 \makebook{F. Scott Fitzgerald}{The Great Gatsby}%
 \makebook{Jonathan Swift}{Gulliver's Travels}%
@@ -80,15 +111,25 @@
 \makebook{Mark Twain}{The Adventures of Huckleberry Finn}%
 \makebook{Garcia Miralles}{Ikigai / 生き甲斐}%
 \makebook{Benjamin Graham}{The Intelligent Investor}%
+\makebook{James Hurley}{Intermediate Calculus, Multivariable Functions and
+  Differential Equations with Applications}%
 \makebook{David S. Moore}{Introduction to the Practice of Statistics}%
 \makebook{Hogg \& McKean \& Craig}{Introduction to Mathematical Statistics}%
 \makebook{Bert Mendelson}{Introduction to Topology}%
 \makebook{Kolmogorov}{Introductory Real Analysis}%
+\makebook{Oxford}{Oxford Beginner's Japanese Dictionary}%
+\makebook{Harold Ono}{Japanese Grammar}%
 \makebook{Herbert Schildt}{Java: The Complete Reference}%
 \makebook{Haruki Murakami}{Kafka on the Shore}%
 \makebook{Andrew Scott Conning}{Kodansha Kanji Learner's Course}%
 \makebook{Jon Bodner}{Learning Go}%
 \makebook{Seneca}{Letters from a Stoic}%
+\makebook{Howard Anton}{Elementary Linear Algebra, with Applications}%
+\makebook{Robert Hoovers}{Linear Algebra for Calculus}%
+\makebook{David Hill}{Elementary Linear Algebra}%
+\makebook{Edward Landesman}{Linear Algebra}%
+\makebook{Stewart Venit}{Elementary Linear Algebra}%
+\makebook{Robert MacCamy}{Linear Analysis and Differential Equations}%
 \makebook{William Golding}{Lord of the Flies}%
 \makebook{Edward Frenkel}{Love and Math}%
 \makebook{Marc Peter Deisenroth \& Aldo Faisal \& Cheng Soon Ong}{Mathematics
@@ -96,27 +137,44 @@
 \makebook{McDaniel Brown, Roediger}{Make It Stick: The Science of Successful
   Learning}%
 \makebook{Stuart Hooper}{Makers of Mathematics}%
+\makebook{John Allen Paulos}{The Mathematics Lover's Companion}%
 \makebook{Joshua Holden}{The Mathematics of Secrets}%
+\makebook{Richard Bellman}{Introduction to Matrix Calculus}%
 \makebook{Marcus Aurelius}{Meditations}%
+\makebook{Immanuel Kant}{Fundamental Principles of the Metaphysic of Morals}%
+\makebook{John R. Searle}{Minds, Brains, and Science}%
 \makebook{Herman Melville}{Moby Dick}%
 \makebook{Andrew S. Tanenbaum}{Modern Operating Systems}%
+\makebook{Joshua Foer}{Moonwalking with Einstein: The Art and Science of
+  Remembering Everything}%
+\makebook{Stephen Hawking}{My Brief History}%
+\makebook{James Shreeve}{The Neandertal Enigma}%
 \makebook{Mung Chiang}{Networked Life}%
 \makebook{Peter Lynch}{One Up On Wall Street}%
+\makebook{Wilfred Owens}{War Poems and Others}%
 \makebook{Hans F. Weinberger}{A First Course in Partial Differential
   Equations}%
 \makebook{Plato \& Socrates \& Euripides et~al}{Plato's Dialgoues}%
+\makebook{George Angus}{Pocket Guide: Human Body}%
 \makebook{Jane Austen}{Pride and Prejudice}%
 \makebook{Scott Chacon \& Ben Straub}{Pro Git}%
 \makebook{Kevin Murphy}{Probabilistic Machine Learning}%
 \makebook{E.T. Jaynes}{Probability Theory: The Logic of Science}%
+\makebook{M.L. Krasnov}{A Book of Problems in Ordinary Differential Equations}%
+\makebook{Andrew Franklin \& Keith Doode}{Proof in Mathematics: An
+  Introduction}%
 \makebook{God}{Qur'an}%
+\makebook{Janet Ashby}{Read Real Japanese}%
 \makebook{Martin Fowler}{Refactoring}%
+\makebook{Robert T. Kiyosaki \& Sharon L. Lechter}{Rich Dad Poor Dad}%
 \makebook{Yuval Noah Harari}{Sapiens. A brief History of Humankind}%
 \makebook{Frances Hodgson Burnett}{The Secret Garden}%
 \makebook{Dale Dougherty}{Sed \& Awk}%
 \makebook{Carlo Rovelli}{Seven Brief Lessons on Physics}%
+\makebook{Robert A. Adams}{Single Variable Calculus}%
 \makebook{Terence Tao}{Solving Mathematical Problems}%
 \makebook{Walter Isaacson}{Steve Jobs}%
+\makebook{Mark Manson}{The Subtle Art of Not Giving a F*ck}%
 \makebook{Alex Xu}{System Design Interview}%
 \makebook{Laozi}{Tao Te Ching}%
 \makebook{Heather Morris}{The Tattooist of Auschwitz}%
@@ -134,12 +192,14 @@
 \makebook{Robert Louis Stevenson}{Treasure Island}%
 \makebook{Arthur Cotterell \& Rachel Storm}{The Ultimate Encyclopedia of
   Mythology}%
+\makebook{James Parinella \& Eric McCarthy}{Ultimate Techniques and Tactics}%
 \makebook{Stephen Abbott}{Understanding Analysis}%
 \makebook{Alan Moore \& David Lloyd}{V for Vendetta}%
 \makebook{Leo Tolstoy}{War and Peace}%
 \makebook{Yevgeny Zamyatin}{We}%
 \makebook{Richard Courant \& Herbert Robbins}{What is Mathematics?}%
 \makebook{Matthew Walker}{Why We Sleep}%
+\makebook{William Wordsworth}{Selected Poems of Wordsworth}%
 \makebook{Paul Gwynne}{World Religions in Practice}%
 \makebook{Emily Bronte}{Wuthering Heights}%
 \makebook{Robert M. Pirsig}{Zen and the Art of Motorcycle Maintenance}%
