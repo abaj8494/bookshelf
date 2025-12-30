@@ -18,6 +18,13 @@ svg: pdf
 fonts:
 	cd doc && $(RM) pickfont.tex allfonts && ${MAKE} allfonts pickfont.tex
 
+# Generate sample.bib from org files in content-org/words/library/books/
+bib:
+	python3 scripts/org2bib.py
+
+# Full rebuild: generate bib, then PDF and SVG
+rebuild: bib pdf svg
+
 %.cls: %.ins %.dtx
 	pdflatex $<
 
@@ -49,4 +56,4 @@ distclean: clean
 archive: all clean
 	COPYFILE_DISABLE=1 tar -C .. -czvf ../$(PACKAGE).tgz --exclude '*~' --exclude '*.tgz' --exclude '*.zip'  --exclude CVS --exclude '.git*' --exclude books.bib $(PACKAGE); mv ../$(PACKAGE).tgz .
 
-.PHONY: all pdf svg fonts clean distclean archive
+.PHONY: all pdf svg fonts bib rebuild clean distclean archive
