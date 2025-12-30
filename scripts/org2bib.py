@@ -24,8 +24,14 @@ BOOKS_DIR = SITE_ROOT / "content-org" / "words" / "library" / "books"
 SAMPLE_BIB = REPO_ROOT / "doc" / "sample.bib"
 
 
+def escape_bibtex_title(title: str) -> str:
+    """Escape characters in titles that are unsafe for BibTeX/LaTeX."""
+    # Escape unescaped &
+    return re.sub(r'(?<!\\)&', r'\\&', title)
+
+
 def parse_org_file(filepath: Path) -> dict | None:
-    """Extract metadata from an org file."""
+    """Extract metadata from an org file (supports both org directives and TOML front matter)."""
     content = filepath.read_text(encoding="utf-8")
 
     # Skip index files
@@ -34,13 +40,21 @@ def parse_org_file(filepath: Path) -> dict | None:
 
     metadata = {"filename": filepath.stem}
 
+    # Check if file uses TOML front matter (+++)
+    if content.startswith("+++"):
+        return parse_toml_front_matter(content, metadata)
+
+    # Otherwise parse org directives
     # Extract title
     title_match = re.search(r"#\+title:\s*(.+)", content, re.IGNORECASE)
+
     if title_match:
-        metadata["title"] = title_match.group(1).strip()
+        raw_title = title_match.group(1).strip()
+        metadata["title"] = escape_bibtex_title(raw_title)
 
     # Extract from hugo_custom_front_matter
-    front_matter = re.search(r"#\+hugo_custom_front_matter:\s*(.+)", content, re.IGNORECASE)
+    front_matter = re.search(
+        r"#\+hugo_custom_front_matter:\s*(.+)", content, re.IGNORECASE)
     if front_matter:
         fm = front_matter.group(1)
 
@@ -67,6 +81,57 @@ def parse_org_file(filepath: Path) -> dict | None:
         edition_match = re.search(r':edition\s+"([^"]+)"', fm)
         if edition_match:
             metadata["edition"] = edition_match.group(1)
+
+    # Must have at least title and author
+    if "title" not in metadata or "author" not in metadata:
+        return None
+
+    return metadata
+
+
+def parse_toml_front_matter(content: str, metadata: dict) -> dict | None:
+    """Parse TOML front matter (between +++ markers)."""
+    # Extract TOML block
+    toml_match = re.match(r"\+\+\+\n(.*?)\n\+\+\+", content, re.DOTALL)
+    if not toml_match:
+        return None
+
+    toml_content = toml_match.group(1)
+
+    # Extract title
+    title_match = re.search(
+        r'^title\s*=\s*"([^"]+)"', toml_content, re.MULTILINE)
+    if title_match:
+        metadata["title"] = title_match.group(1)
+
+    # Extract author - handle both string and array formats
+    # Format 1: author = "Name"
+    author_match = re.search(
+        r'^author\s*=\s*"([^"]+)"', toml_content, re.MULTILINE)
+    if author_match:
+        metadata["author"] = author_match.group(1)
+    else:
+        # Format 2: author = ["Name1", "Name2"]
+        author_list = re.search(
+            r'^author\s*=\s*\[([^\]]+)\]', toml_content, re.MULTILINE)
+        if author_list:
+            names = re.findall(r'"([^"]+)"', author_list.group(1))
+            if names:
+                metadata["author"] = " and ".join(names)
+
+    # Extract year from various fields: composed, published, [params] published
+    year_match = re.search(
+        r'(?:composed|published)\s*=\s*"?([^"\n]*\d{4})', toml_content)
+    if year_match:
+        # Extract just the 4-digit year
+        year_only = re.search(r'(\d{4})', year_match.group(1))
+        if year_only:
+            metadata["year"] = year_only.group(1)
+
+    # Extract edition from [params] section or top level
+    edition_match = re.search(r'edition\s*=\s*"([^"]+)"', toml_content)
+    if edition_match:
+        metadata["edition"] = edition_match.group(1)
 
     # Must have at least title and author
     if "title" not in metadata or "author" not in metadata:
@@ -118,7 +183,8 @@ def main():
     rebuild = "--rebuild" in sys.argv
 
     if not BOOKS_DIR.exists():
-        print(f"Error: Books directory not found: {BOOKS_DIR}", file=sys.stderr)
+        print(f"Error: Books directory not found: {
+              BOOKS_DIR}", file=sys.stderr)
         sys.exit(1)
 
     # Collect all org files
@@ -139,7 +205,8 @@ def main():
 
     print(f"Generated {len(entries)} bib entries")
     if skipped:
-        print(f"Skipped {len(skipped)} files (missing title/author): {', '.join(skipped[:5])}...")
+        print(f"Skipped {
+              len(skipped)} files (missing title/author): {', '.join(skipped[:5])}...")
 
     # Combine entries
     bib_content = "\n\n".join(entries) + "\n"
