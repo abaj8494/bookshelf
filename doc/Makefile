@@ -2,6 +2,8 @@ SAMPLE = spines.tex
 
 SAMPLEPDF = spines.pdf
 
+SAMPLESVG = bookshelf.svg
+
 MAINDOC = bookshelf.pdf
 
 CLS = bookshelf.cls
@@ -16,7 +18,12 @@ SCRIPTTEX = $(notdir ${PERLSCRIPTS:%=%.tex})
 
 SCRIPTPDF = $(notdir ${PERLSCRIPTS:%=%.pdf})
 
-all: ${MAN} allfonts ${SAMPLEPDF} ${SCRIPTPDF} ${MAINDOC}
+all: ${MAN} allfonts ${SAMPLEPDF} ${SAMPLESVG} ${SCRIPTPDF} ${MAINDOC}
+
+# Generate SVG from PDF using inkscape
+${SAMPLESVG}: ${SAMPLEPDF}
+	inkscape --pdf-poppler --export-text-to-path --export-plain-svg \
+		--export-area-drawing --export-filename=$@ $<
 
 %.1: ../scripts/%
 	pod2man $< > $@
@@ -72,4 +79,4 @@ clean:
 	$(RM) -r fontsel 
 
 distclean: clean
-	$(RM) ${MAN} allfonts ${SAMPLEPDF} ${SCRIPTPDF} ${MAINDOC}
+	$(RM) ${MAN} allfonts ${SAMPLEPDF} ${SAMPLESVG} ${SCRIPTPDF} ${MAINDOC}
