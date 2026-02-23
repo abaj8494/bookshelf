@@ -4,6 +4,7 @@
 \makebook{Timothy Ferriss}{The 4-Hour Workweek}%
 \makebook{Robert Greene}{48 Laws of Power}%
 \makebook{Frank McMullen}{50 Challenging Calculus Problems}%
+\makebook{László Polgár}{Chess 5334 Problems, Combinations and Games}%
 \makebook{Stephen Covey}{The 7 Habits of Highly Effective People}%
 \makebook{Robert L. Caplan}{Advanced Calculus}%
 \makebook{Francis Bacon}{The Advancement of Learning}%
@@ -15,6 +16,7 @@
 \makebook{Lewis Carroll}{Alice's Adventures in Wonderland}%
 \makebook{Larry Wasserman}{All of Statistics}%
 \makebook{Eric Jorgenson}{The Almanack of Naval Ravikant}%
+\makebook{Robert J. Chassell}{An Introduction to Programming in Emacs Lisp}%
 \makebook{George Orwell}{Animal Farm}%
 \makebook{Lucy Maud Montgomery}{Anne of Green Gables}%
 \makebook{Nicholas Nassim Taleb}{Antifragile}%
@@ -88,7 +90,10 @@
   of Statistical Learning}%
 \makebook{T. S. Eliot}{Selected Poems}%
 \makebook{Jane Austen}{Emma}%
+\makebook{Aziz \& Lee \& Prakash}{Elements of Programming Interviews (in
+  Java)}%
 \makebook{Pasquale Baccarini}{Essential Ultimate}%
+\makebook{Sarah Khan}{The Usborne Book of Facts and Records}%
 \makebook{Fudeko Reekie}{A First Course in Japanese Workbook}%
 \makebook{Fudeko Reekie}{A First Course in Japanese}%
 \makebook{Terence McKenna}{Food of the Gods}%
@@ -132,8 +137,7 @@
 \makebook{Robert MacCamy}{Linear Analysis and Differential Equations}%
 \makebook{William Golding}{Lord of the Flies}%
 \makebook{Edward Frenkel}{Love and Math}%
-\makebook{Marc Peter Deisenroth \& Aldo Faisal \& Cheng Soon Ong}{Mathematics
-  for Machine Learning}%
+\makebook{Deisenroth \& Faisal \& Ong}{Mathematics for Machine Learning}%
 \makebook{McDaniel Brown, Roediger}{Make It Stick: The Science of Successful
   Learning}%
 \makebook{Stuart Hooper}{Makers of Mathematics}%
@@ -145,6 +149,7 @@
 \makebook{John R. Searle}{Minds, Brains, and Science}%
 \makebook{Herman Melville}{Moby Dick}%
 \makebook{Andrew S. Tanenbaum}{Modern Operating Systems}%
+\makebook{Nick de Firmian}{Modern Chess Openings}%
 \makebook{Joshua Foer}{Moonwalking with Einstein: The Art and Science of
   Remembering Everything}%
 \makebook{Stephen Hawking}{My Brief History}%
@@ -154,15 +159,17 @@
 \makebook{Wilfred Owens}{War Poems and Others}%
 \makebook{Hans F. Weinberger}{A First Course in Partial Differential
   Equations}%
-\makebook{Plato \& Socrates \& Euripides et~al}{Plato's Dialgoues}%
+\makebook{Plato \& Socrates \& Euripides et~al}{Plato's Dialogues}%
 \makebook{George Angus}{Pocket Guide: Human Body}%
 \makebook{Jane Austen}{Pride and Prejudice}%
 \makebook{Scott Chacon \& Ben Straub}{Pro Git}%
 \makebook{Kevin Murphy}{Probabilistic Machine Learning}%
 \makebook{E.T. Jaynes}{Probability Theory: The Logic of Science}%
 \makebook{M.L. Krasnov}{A Book of Problems in Ordinary Differential Equations}%
+\makebook{Roberto Lerusalimschy}{Programming in Lua}%
 \makebook{Andrew Franklin \& Keith Doode}{Proof in Mathematics: An
   Introduction}%
+\makebook{G. H. Hardy}{A Course of Pure Mathematics}%
 \makebook{God}{Qur'an}%
 \makebook{Janet Ashby}{Read Real Japanese}%
 \makebook{Martin Fowler}{Refactoring}%
@@ -178,6 +185,7 @@
 \makebook{Alex Xu}{System Design Interview}%
 \makebook{Laozi}{Tao Te Ching}%
 \makebook{Heather Morris}{The Tattooist of Auschwitz}%
+\makebook{David Spiegelhalter}{The Art of Statistics}%
 \makebook{Raymond Chandler}{The Big Sleep}%
 \makebook{Dan Brown}{The Da Vinci Code}%
 \makebook{Herodotus}{The Histories}%
@@ -194,6 +202,7 @@
   Mythology}%
 \makebook{James Parinella \& Eric McCarthy}{Ultimate Techniques and Tactics}%
 \makebook{Stephen Abbott}{Understanding Analysis}%
+\makebook{Sam Collins}{Understanding the Chess Openings}%
 \makebook{Alan Moore \& David Lloyd}{V for Vendetta}%
 \makebook{Leo Tolstoy}{War and Peace}%
 \makebook{Yevgeny Zamyatin}{We}%
@@ -201,5 +210,7 @@
 \makebook{Matthew Walker}{Why We Sleep}%
 \makebook{William Wordsworth}{Selected Poems of Wordsworth}%
 \makebook{Paul Gwynne}{World Religions in Practice}%
+\makebook{Wesley So \& Michael Adams \& Graham Burgess et~al}{The Mammoth Book
+  of the World's Greatest Chess Games}%
 \makebook{Emily Bronte}{Wuthering Heights}%
 \makebook{Robert M. Pirsig}{Zen and the Art of Motorcycle Maintenance}%
