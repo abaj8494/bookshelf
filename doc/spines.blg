@@ -3,31 +3,31 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: spines.aux
 The style file: bookshelf.bst
 Database file #1: sample.bib
-You've used 196 entries,
+You've used 199 entries,
             97 wiz_defined-function locations,
-            682 strings with 11923 characters,
-and the built_in function-call counts, 5041 in all, are:
+            691 strings with 12157 characters,
+and the built_in function-call counts, 5113 in all, are:
 = -- 0
-> -- 625
+> -- 634
 < -- 0
-+ -- 233
-- -- 233
-* -- 862
-:= -- 1250
++ -- 236
+- -- 236
+* -- 874
+:= -- 1268
 add.period$ -- 0
-call.type$ -- 196
+call.type$ -- 199
 change.case$ -- 0
 chr.to.int$ -- 0
 cite$ -- 0
 duplicate$ -- 0
 empty$ -- 0
-format.name$ -- 233
-if$ -- 625
+format.name$ -- 236
+if$ -- 634
 int.to.chr$ -- 0
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 196
-num.names$ -- 196
+newline$ -- 199
+num.names$ -- 199
 pop$ -- 0
 preamble$ -- 0
 purify$ -- 0
@@ -41,6 +41,6 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 196
+while$ -- 199
 width$ -- 0
-write$ -- 196
+write$ -- 199

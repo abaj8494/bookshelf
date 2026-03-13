@@ -4,8 +4,9 @@
 \makebook{Timothy Ferriss}{The 4-Hour Workweek}%
 \makebook{Robert Greene}{48 Laws of Power}%
 \makebook{Frank McMullen}{50 Challenging Calculus Problems}%
-\makebook{László Polgár}{Chess 5334 Problems, Combinations and Games}%
+\makebook{László Polgár}{Chess: 5334 Problems, Combinations and Games}%
 \makebook{Stephen Covey}{The 7 Habits of Highly Effective People}%
+\makebook{Jeffrey S. Rosenthal}{A First Look at Rigorous Probability Theory}%
 \makebook{Robert L. Caplan}{Advanced Calculus}%
 \makebook{Francis Bacon}{The Advancement of Learning}%
 \makebook{Virgil}{Aeneid}%
@@ -106,6 +107,7 @@
 \makebook{F. Scott Fitzgerald}{The Great Gatsby}%
 \makebook{Jonathan Swift}{Gulliver's Travels}%
 \makebook{William Shakespeare}{Hamlet}%
+\makebook{James Heisig}{Remembering the Kanji (RTK)}%
 \makebook{Douglas Adams}{The Hitchhiker's Guide to the Galaxy}%
 \makebook{God}{Holy Bible}%
 \makebook{Aurélien Géron}{Hands on Machine Learning}%
@@ -192,6 +194,7 @@
 \makebook{Homer}{The Iliad}%
 \makebook{Homer}{The Odyssey}%
 \makebook{Will Durant}{The Story of Philosophy}%
+\makebook{Leonard Mlodinow}{The Drunkard's Walk}%
 \makebook{Napoleon Hill}{Think and Grow Rich}%
 \makebook{Daniel Kahneman}{Thinking Fast \& Slow}%
 \makebook{Sophocles}{The Three Theban Plays}%
